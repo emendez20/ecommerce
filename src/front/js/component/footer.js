@@ -7,42 +7,23 @@ export const Footer = () => (
 		<Card>
 			<Accordion defaultActiveKey="0">
 				<Card>
-					<Accordion.Toggle as={Card.Header} eventKey="0">
+					<Accordion.Toggle as={Card.Header} eventKey="0" id="footer">
 						sobre nosotros
 					</Accordion.Toggle>
 					<Accordion.Collapse eventKey="0">
 						<Card.Body>
-							<p>Hello!</p>
+							<p id="pie">Hello!</p>
 						</Card.Body>
 					</Accordion.Collapse>
 				</Card>
 				<Card>
-					<Accordion.Toggle as={Card.Header} eventKey="1">
+					<Accordion.Toggle as={Card.Header} eventKey="1" id="footer">
 						información
 					</Accordion.Toggle>
 					<Accordion.Collapse eventKey="1">
 						<Card.Body>
-							<p>Sobre Nosotros</p>
-							<p>Información De Entrega</p>
-							<p>Política De Privacidad</p>
-							<p>Términos Y Condiciones</p>
-							<p>Contáctenos</p>
-							<p>Devoluciones</p>
-						</Card.Body>
-					</Accordion.Collapse>
-				</Card>
-				<Card>
-					<Accordion.Toggle as={Card.Header} eventKey="2">
-						servicio al cliente
-					</Accordion.Toggle>
-					<Accordion.Collapse eventKey="2">
-						<Card.Body>
-							<div>
-								<p>Mapa Del Sitio</p>
-								<p>Lista De Deseos</p>
-								<p>Marcas</p>
-								<p>Afiliado</p>
-							</div>
+							<p id="pie">Sobre Nosotros</p>
+							<p id="pie">Contáctenos</p>
 						</Card.Body>
 					</Accordion.Collapse>
 				</Card>
