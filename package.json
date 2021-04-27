@@ -76,11 +76,15 @@
 		]
 	},
 	"dependencies": {
+
+		"@paypal/react-paypal-js": "^6.0.0",
+
 		"bootstrap": "^4.6.0",
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",
 		"react-bootstrap": "^1.5.2",
 		"react-dom": "^16.8.4",
+		"react-paypal-express-checkout": "^1.0.5",
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^5.2.0"
 	}

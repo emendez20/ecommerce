@@ -9,9 +9,14 @@ import { Seller } from "./pages/seller";
 import { Costumer } from "./pages/costumer";
 import { PurchaseCostumer } from "./pages/purchaseCostumer";
 import injectContext from "./store/appContext";
+import { Seller } from "./pages/seller_view";
+import { SellerViewBuyerSide } from "./pages/seller_view_buyer_side";
+import { Cart } from "./pages/cart_view";
+import { NewProduct } from "./pages/seller_add_prod";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Menu } from "./component/menu";
 
 //create your first component
 const Layout = () => {
@@ -28,8 +33,17 @@ const Layout = () => {
 						<Route exact path="/">
 							<Home />
 						</Route>
-						<Route exact path="/demo">
-							<Demo />
+						<Route exact path="/seller_view">
+							<Seller />
+						</Route>
+						<Route exact path="/seller_view_buyer_side">
+							<SellerViewBuyerSide />
+						</Route>
+						<Route exact path="/seller_view_buyer_side">
+							<SellerViewBuyerSide />
+						</Route>
+						<Route exact path="/cart_view">
+							<Cart />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
@@ -44,10 +58,15 @@ const Layout = () => {
 							<PurchaseCostumer />
 						</Route>
 						<Route>
+							<NewProduct />
+						</Route>
+						<Route>
 							<h1>Not found!</h1>
 						</Route>
 					</Switch>
+
 					<Footer />
+					<Menu />
 				</ScrollToTop>
 			</BrowserRouter>
 		</div>
