@@ -4,7 +4,7 @@ import { Container } from "react-bootstrap";
 import { SellerInfo } from "./sellerInfo";
 import { HistorySeller } from "./historySeller";
 import { Inventory } from "./inventory";
-export const Seller = () => {
+export const SellerProfile = () => {
 	return (
 		<Container fluid>
 			<SellerInfo />
