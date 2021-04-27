@@ -6,6 +6,7 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { Seller } from "./pages/seller";
+import { Sales } from "./pages/Sales";
 import { Costumer } from "./pages/costumer";
 import { PurchaseCostumer } from "./pages/purchaseCostumer";
 import injectContext from "./store/appContext";
@@ -56,6 +57,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/purchaseCostumer">
 							<PurchaseCostumer />
+						</Route>
+						<Route exact path="/Sales">
+							<Sales />
 						</Route>
 						<Route>
 							<NewProduct />
