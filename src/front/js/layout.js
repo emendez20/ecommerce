@@ -18,6 +18,7 @@ import { NewProduct } from "./pages/seller_add_prod";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Menu } from "./component/menu";
+import { MainNav } from "./component/main-nav";
 
 //create your first component
 const Layout = () => {
@@ -63,6 +64,12 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/seller_add_prod">
 							<NewProduct />
+						</Route>
+						<Route exact path="/navseller_add_prod">
+							<NewProduct />
+						</Route>
+						<Route exact path="/main-nav">
+							<MainNav />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
