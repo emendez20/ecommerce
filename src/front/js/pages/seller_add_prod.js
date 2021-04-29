@@ -24,53 +24,55 @@ export const NewProduct = () => {
 		event.preventDefault();
 	};
 	return (
-		<form onSubmit={handleSubmit}>
-			<h1>Agregar Nuevo Producto</h1>
+		<div id="body">
+			<form onSubmit={handleSubmit}>
+				<h1>Agregar Nuevo Producto</h1>
 
-			<label>
-				Nombre:
-				<input name="name" type="text" value={name} onChange={e => setName(e.target.value)} required />
-			</label>
-			<label>
-				Codigo:
-				<input name="code" type="number" value={code} onChange={e => setCode(e.target.value)} required />
-			</label>
-			<label>
-				Description:
-				<input
-					name="description"
-					type="textarea"
-					value={description}
-					onChange={e => setDescription(e.target.value)}
-					required
-				/>
-			</label>
-			<label>
-				Precio:
-				<input name="price" type="number" value={price} onChange={e => setPrice(e.target.value)} required />
-			</label>
-			<label>
-				Inventario:
-				<input
-					name="inventory"
-					type="number"
-					value={inventory}
-					onChange={e => setPrice(e.target.value)}
-					required
-				/>
-			</label>
-			<label>
-				Imagenes:
-				<input
-					name="pictures"
-					type="file"
-					value={pictures}
-					onChange={e => setPrice([...pictures, e.target.value])}
-					required
-				/>
-			</label>
+				<label>
+					Nombre:
+					<input name="name" type="text" value={name} onChange={e => setName(e.target.value)} required />
+				</label>
+				<label>
+					Codigo:
+					<input name="code" type="number" value={code} onChange={e => setCode(e.target.value)} required />
+				</label>
+				<label>
+					Description:
+					<input
+						name="description"
+						type="textarea"
+						value={description}
+						onChange={e => setDescription(e.target.value)}
+						required
+					/>
+				</label>
+				<label>
+					Precio:
+					<input name="price" type="number" value={price} onChange={e => setPrice(e.target.value)} required />
+				</label>
+				<label>
+					Inventario:
+					<input
+						name="inventory"
+						type="number"
+						value={inventory}
+						onChange={e => setPrice(e.target.value)}
+						required
+					/>
+				</label>
+				<label>
+					Imagenes:
+					<input
+						name="pictures"
+						type="file"
+						value={pictures}
+						onChange={e => setPrice([...pictures, e.target.value])}
+						required
+					/>
+				</label>
 
-			<button>Agregar</button>
-		</form>
+				<button>Agregar</button>
+			</form>
+		</div>
 	);
 };
