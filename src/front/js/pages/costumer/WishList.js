@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Context } from "../store/appContext";
+import { Context } from "../../store/appContext";
 import { Card, Button, Container, CardGroup } from "react-bootstrap";
-import "../../styles/usuario.scss";
-export const HistorySeller = () => {
+import "../../../styles/usuario.scss";
+export const WishList = () => {
 	return (
 		<Card>
-			<Card.Header id="usuario">historial de ventas</Card.Header>
+			<Card.Header id="usuario">
+				Wish List
+				<Button variant="info">agregar producto</Button>
+			</Card.Header>
+
 			<Card.Body>
 				<CardGroup>
 					<Card id="historial">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Context } from "../store/appContext";
+import { Context } from "../../store/appContext";
 import { Container } from "react-bootstrap";
 import { CostumerInfo } from "./costumerInfo";
 import { HistoryCostumer } from "./HistoryCostumer";

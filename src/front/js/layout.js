@@ -5,10 +5,10 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
-import { Seller } from "./pages/seller";
-import { Sales } from "./pages/Sales";
-import { Costumer } from "./pages/costumer";
-import { PurchaseCostumer } from "./pages/purchaseCostumer";
+import { SellerProfile } from "./pages/sellerProfile/sellerProfile";
+import { Sales } from "./pages/sales/Sales";
+import { Costumer } from "./pages/costumer/costumer";
+import { PurchaseCostumer } from "./pages/purchaseCostumer/purchaseCostumer";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -35,8 +35,8 @@ const Layout = () => {
 						<Route exact path="/single/:theid">
 							<Single />
 						</Route>
-						<Route exact path="/seller">
-							<Seller />
+						<Route exact path="/sellerprofile">
+							<SellerProfile />
 						</Route>
 						<Route exact path="/costumer">
 							<Costumer />

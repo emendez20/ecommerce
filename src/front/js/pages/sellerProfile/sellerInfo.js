@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Context } from "../store/appContext";
+import { Context } from "../../store/appContext";
 import { Card, Button, Container, CardGroup, Image } from "react-bootstrap";
-import "../../styles/usuario.scss";
+import "../../../styles/usuario.scss";
 export const SellerInfo = () => {
 	return (
 		<Card id="completa">

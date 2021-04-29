@@ -1,5 +1,5 @@
 import React from "react";
-import { Context } from "../store/appContext";
+import { Context } from "../../store/appContext";
 import { Container, Card, Button, CardDeck, Accordion } from "react-bootstrap";
 import { SalesInfo } from "./SalesInfo";
 import { SalesArticles } from "./SalesArticles";

@@ -1,8 +1,8 @@
 import React from "react";
-import { Context } from "../store/appContext";
+import { Context } from "../../store/appContext";
 import { Container, Card, Button, CardDeck, Row, Col } from "react-bootstrap";
-import "../../styles/purchase.scss";
-export const Articles = () => {
+import "../../../styles/purchase.scss";
+export const SalesArticles = () => {
 	let hola = ["Primary", "Secondary", "Success"];
 	return hola.map((variant, idx) => (
 		<Container fluid key={idx}>

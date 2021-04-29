@@ -1,7 +1,7 @@
 import React from "react";
-import { Context } from "../store/appContext";
+import { Context } from "../../store/appContext";
 import { Container, Card, Button, CardDeck, Row, Col } from "react-bootstrap";
-import "../../styles/purchase.scss";
+import "../../../styles/purchase.scss";
 export const SalesInfo = () => {
 	return (
 		<Card.Body>

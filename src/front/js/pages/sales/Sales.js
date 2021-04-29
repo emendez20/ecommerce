@@ -1,7 +1,7 @@
 import React from "react";
-import { Context } from "../store/appContext";
+import { Context } from "../../store/appContext";
 import { Container, Card, Button, CardDeck, Accordion } from "react-bootstrap";
-import "../../styles/purchase.scss";
+import "../../../styles/purchase.scss";
 import { SalesCards } from "./salesCards";
 export const Sales = () => {
 	return (
