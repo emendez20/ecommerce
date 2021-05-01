@@ -5,6 +5,9 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
+import { Seller } from "./pages/seller";
+import { Costumer } from "./pages/costumer";
+import { PurchaseCostumer } from "./pages/purchaseCostumer";
 import injectContext from "./store/appContext";
 import { Seller } from "./pages/seller_view";
 import { SellerViewBuyerSide } from "./pages/seller_view_buyer_side";
@@ -44,6 +47,15 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
+						</Route>
+						<Route exact path="/seller">
+							<Seller />
+						</Route>
+						<Route exact path="/costumer">
+							<Costumer />
+						</Route>
+						<Route exact path="/purchaseCostumer">
+							<PurchaseCostumer />
 						</Route>
 						<Route>
 							<NewProduct />
