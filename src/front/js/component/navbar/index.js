@@ -72,12 +72,12 @@ const Navbar = ({ toggle }) => {
 							</NavItem>
 							<NavItem>
 								<NavLinks to="signup" smooth={true} duration={500} spy={true} exact="true" offset={-80}>
-									Sign Up
+									Únete
 								</NavLinks>
 							</NavItem>
 						</NavMenu>
 						<NavBtn>
-							<NavBtnLink to="/signin">Sign In</NavBtnLink>
+							<NavBtnLink to="/signin">Iniciar sesíon</NavBtnLink>
 						</NavBtn>
 					</NavbarContainer>
 				</Nav>

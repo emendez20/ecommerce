@@ -1,0 +1,23 @@
+.handheld-toolbar{
+    font-size: larger;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;    
+    background-color: white;
+    padding: 5px;
+}
+a{
+    text-decoration: none !important;
+    color: #373f50;
+}
+i{
+    font-size: x-large !important;
+}
+.handheld-toolbar-item{
+    border: 0.5px solid #f3f5f9;
+}
+.handheld-toolbar-item-mid{
+    border-top: 0.5px solid #f3f5f9;
+    border-bottom: 0.5px solid #f3f5f9;
+}
