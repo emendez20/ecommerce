@@ -17,6 +17,11 @@ flask-cors = "*"
 gunicorn = "*"
 cloudinary = "*"
 flask-admin = "*"
+mysql = "*"
+mysqlclient = "*"
+flask-mysql = "*"
+flask-jwt-extended = "*"
+passlib = "*"
 
 [requires]
 python_version = "3.8"
