@@ -9,7 +9,7 @@ const Hero = () => {
 	};
 	return (
 		<>
-			<HeroContainer className="container-flex">
+			<HeroContainer>
 				<Navbar toggle={toggle} />
 				<SideBar isOpen={isOpen} toggle={toggle} />
 				<HeroContent>

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import img from "../../../img/img1.jpg";
+import img2 from "../../../img/img2.jpg";
+import img3 from "../../../img/img3.jpg";
 /*import video from "../../../images/video/video.mp4";*/
 import { Button } from "../buttonElements";
 import {
 	HeroContainer,
-	VideoBg,
 	HeroBg,
 	HeroContent,
 	HeroH1,
@@ -16,17 +18,15 @@ const HeroSection = () => {
 	const [hover, setHover] = useState(false);
 	const onHover = () => {
 		setHover(!hover);
-	};
+	}; //<VideoBg /*autoPlay loop muted src={video} type="video/mp4"*/ />
 
 	return (
 		<>
 			<HeroContainer id="home">
-				<HeroBg>
-					<VideoBg /*autoPlay loop muted src={video} type="video/mp4"*/ />
-				</HeroBg>
+				<HeroBg />
 				<HeroContent>
-					<HeroH1> virtual shopping made Easy </HeroH1>
-					<HeroP>sign up for a new account today and receive $250 in credit towards your next payment.</HeroP>
+					<HeroH1> Las compras virtuales lo hacen fácil </HeroH1>
+					<HeroP> Regístrate con una nueva cuenta y recibe la mejor experiencia para comprar y vender.</HeroP>
 					<HeroBtnWrapper>
 						<Button
 							to="signup"
@@ -39,7 +39,7 @@ const HeroSection = () => {
 							spy={true}
 							exact="true"
 							offset={-80}>
-							get started {hover ? <ArrowForward /> : <ArrowRight />}
+							comencemos {hover ? <ArrowForward /> : <ArrowRight />}
 						</Button>
 					</HeroBtnWrapper>
 				</HeroContent>

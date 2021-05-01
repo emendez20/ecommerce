@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import { MdKeyboardArrowRight, MdArrowForward } from "react-icons/md";
+import ImgBg from "../../../img/img3.jpg";
 
 export const HeroContainer = styled.div`
-	background: #0c0c0c !important;
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1)), url(${ImgBg}) !important;
+	background-position: center !important;
+	background-size: cover !important;
 	display: flex !important;
 	justify-content: center !important;
 	align-items: center !important;
