@@ -5,6 +5,7 @@ import { ProductsData, ProductsData2 } from "../component/homesignin/products/da
 import { BrowserRouter as Router } from "react-router-dom";
 import Feature from "../component/homesignin/feature/index";
 import Footer from "../component/footer/index";
+import { Menu } from "../component/menu";
 const HomeSignin = () => {
 	return (
 		<>
@@ -13,6 +14,7 @@ const HomeSignin = () => {
 				<Products heading=" escoge tus productos" data={ProductsData} />
 				<Feature />
 				<Products heading=" productos" data={ProductsData2} />
+				<Menu />
 				<Footer />
 			</Router>
 		</>
