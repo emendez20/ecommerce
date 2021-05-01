@@ -2,13 +2,13 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
-import { Home } from "./pages/home";
-import { Demo } from "./pages/demo";
-import { Single } from "./pages/single";
-import { SellerProfile } from "./pages/sellerProfile";
-import { Sales } from "./pages/Sales";
-import { Costumer } from "./pages/costumer";
-import { PurchaseCostumer } from "./pages/purchaseCostumer";
+import { SellerProfile } from "./pages/sellerProfile/sellerProfile";
+import { Sales } from "./pages/sales/Sales";
+import { Costumer } from "./pages/costumer/costumer";
+import { PurchaseCostumer } from "./pages/purchaseCostumer/purchaseCostumer";
+import Home from "./pages/home";
+import HomeSignin from "./pages/homeSignin";
+import SigninPage from "./pages/signin";
 import injectContext from "./store/appContext";
 import { Seller } from "./pages/seller_view";
 import { SellerViewBuyerSide } from "./pages/seller_view_buyer_side";
@@ -16,7 +16,7 @@ import { Cart } from "./pages/cart_view";
 import { NewProduct } from "./pages/seller_add_prod";
 
 import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
+import Footer from "./component/footer/index";
 import { Menu } from "./component/menu";
 
 //create your first component
@@ -26,14 +26,16 @@ const Layout = () => {
 	const basename = process.env.BASENAME || "";
 
 	return (
-		<div className="d-flex flex-column h-100">
+		<div className="d-flex flex-column">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<Navbar />
 					<Switch>
 						<Route exact path="/">
 							<Home />
 							<Footer />
+						</Route>
+						<Route exact path="/homesignin">
+							<HomeSignin />
 						</Route>
 						<Route exact path="/seller_view">
 							<Seller />
@@ -50,10 +52,10 @@ const Layout = () => {
 						<Route exact path="/cart_view">
 							<Cart />
 						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
+						<Route exact path="/signin">
+							<SigninPage />
 						</Route>
-						<Route exact path="/sellerProfile">
+						<Route exact path="/sellerprofile">
 							<SellerProfile />
 						</Route>
 						<Route exact path="/costumer">
