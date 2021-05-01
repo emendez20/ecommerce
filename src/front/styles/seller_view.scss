@@ -6,9 +6,9 @@
 }
 .seller_body,.card_content,.card_header,.myCard{
     box-sizing: border-box;
-    width: 100%;
+ 
     height: 100%;
-    margin: 10px;
+
     overflow: hidden;
 
 }
@@ -17,8 +17,25 @@
 }
 
 
-@media only screen and (min-width: 500px) {
+@media only screen and (max-width: 500px) {
   .cGroup{
       flex-direction: row;
   }
+}
+.text-center {
+    background: #dfe6e9;
+}
+#boton{
+    	font-size: 1.4rem !important;
+	padding: 1rem 4rem !important;
+	border: none !important;
+	background: #00b894 !important;
+	color: #fff !important;
+	transition: 0.2 ease-out !important;
+}
+#boton:hover{
+background: #fdcb6e !important;
+		transition: 0.2 ease-out !important;
+		cursor: pointer !important;
+		color: #000 !important;
 }
