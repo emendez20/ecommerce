@@ -18,7 +18,7 @@ const HeroSection = () => {
 	const [hover, setHover] = useState(false);
 	const onHover = () => {
 		setHover(!hover);
-	}; //<VideoBg /*autoPlay loop muted src={video} type="video/mp4"*/ />
+	}; //<VideoBg /*autoPlay loop muted src={video} type="video/mp4" />
 
 	return (
 		<>

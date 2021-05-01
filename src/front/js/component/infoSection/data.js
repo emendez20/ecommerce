@@ -1,20 +1,19 @@
-import carro from "../../../img/car.svg";
+import carro from "../../../img/img1.jpg";
 export const homeObjOne = {
 	id: "about",
-	lightBg: false,
-	lightText: true,
-	lightTextDesc: true,
-	topLine: "premium bank",
-	headline: "unlimited Transactions with zero fees",
-	description:
-		"get access to our exclusive app that allows you to send unlimited  transactions with out getting charged any fees.",
-	buttonLabel: "get started ",
+	lightBg: true,
+	lightText: false,
+	lightTextDesc: false,
+	topLine: "flexible",
+	headline: "decide lo que quieras ser",
+	description: "obten acceso a nuestra app que te permite comprar a empresas nacionales y vender.",
+	buttonLabel: " registrate",
 	imgStart: false,
 	img: carro,
 	alt: "Car",
-	dark: true,
-	primary: true,
-	darkText: false
+	dark: false,
+	primary: false,
+	darkText: true
 };
 
 export const homeObjTwo = {
@@ -28,7 +27,7 @@ export const homeObjTwo = {
 		"get access to our exclusive app that allows you to send unlimited  transactions with out getting charged any fees.",
 	buttonLabel: "learn more ",
 	imgStart: true,
-	img: "AddToCart",
+	img: carro,
 	alt: "Car",
 	dark: false,
 	primary: false,
@@ -40,13 +39,12 @@ export const homeObjThree = {
 	lightBg: true,
 	lightText: false,
 	lightTextDesc: false,
-	topLine: "join to our team",
-	headline: "creating an account is extremely esay",
-	description:
-		"get access to our exclusive app that allows you to send unlimited  transactions with out getting charged any fees.",
-	buttonLabel: "start now",
+	topLine: "únete a nuestro equipo ",
+	headline: "crear una cuenta es muy fácil",
+	description: "obten acceso a nuestra app que te permite comprar a empresas nacionales y vender.",
+	buttonLabel: "registrate",
 	imgStart: false,
-	img: "AddToCart",
+	img: carro,
 	alt: "Car",
 	dark: false,
 	primary: false,
