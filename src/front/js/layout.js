@@ -32,7 +32,6 @@ const Layout = () => {
 					<Switch>
 						<Route exact path="/">
 							<Home />
-							<Footer />
 						</Route>
 						<Route exact path="/homesignin">
 							<HomeSignin />
@@ -77,8 +76,6 @@ const Layout = () => {
 							<h1>Not found!</h1>
 						</Route>
 					</Switch>
-
-					<Menu />
 				</ScrollToTop>
 			</BrowserRouter>
 		</div>

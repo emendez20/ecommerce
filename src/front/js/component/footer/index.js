@@ -65,7 +65,7 @@ const Footer = () => {
 				</FooterWrap>
 				<SocialMedia>
 					<SocialMediaWrap>
-						<SocialLogo to="/" onClick={toggleHome}>
+						<SocialLogo to="/homesignin" onClick={toggleHome}>
 							Ticompras
 						</SocialLogo>
 						<WebsideRights>Ticompras © {new Date().getFullYear()} All rights reserved</WebsideRights>
