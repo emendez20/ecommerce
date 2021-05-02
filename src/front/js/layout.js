@@ -9,7 +9,7 @@ import { Seller } from "./pages/seller";
 import { Costumer } from "./pages/costumer";
 import { PurchaseCostumer } from "./pages/purchaseCostumer";
 import injectContext from "./store/appContext";
-import { Seller } from "./pages/seller_view";
+import { SellerView } from "./pages/seller_view";
 import { SellerViewBuyerSide } from "./pages/seller_view_buyer_side";
 import { Cart } from "./pages/cart_view";
 import { NewProduct } from "./pages/seller_add_prod";
@@ -34,7 +34,7 @@ const Layout = () => {
 							<Home />
 						</Route>
 						<Route exact path="/seller_view">
-							<Seller />
+							<SellerView />
 						</Route>
 						<Route exact path="/seller_view_buyer_side">
 							<SellerViewBuyerSide />
