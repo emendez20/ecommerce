@@ -4,21 +4,18 @@ import "../../styles/seller_view.scss";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import Button from "react-bootstrap/Button";
-
+import marca from "../../img/ti.png";
 export const Seller = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="text-center mt-5 d-flex flex-column">
+		<div className="text-center d-flex flex-column">
 			<div className="seller_header d-flex flex-row">
 				<div className="p-2 bd-highlight align-self-center">
-					<h1>Seller Name</h1>
+					<img src={marca} style={{ width: "250px" }} />
 				</div>
 				<div className="p-2 bd-highlight align-self-center">
-					<img
-						src="https://ticompras.s3.amazonaws.com/Placeholder_seller_logo.jpg"
-						style={{ width: "10em" }}
-					/>
+					<h1>Seller Name</h1>
 				</div>
 			</div>
 			<div className="seller_header d-flex flex-row">
@@ -26,13 +23,13 @@ export const Seller = () => {
 					<h2>Inventario</h2>
 				</div>
 				<div className="p-2 bd-highlight align-self-center">
-					<Button variant="dark" className="m-1">
+					<Button id="boton" variant="dark" className="m-1">
 						<i className="fas fa-plus" />
 					</Button>
 				</div>
 			</div>
 			<div className="seller_body">
-				<CardGroup className="d-flex flex-column m-3 p-2 cGroup">
+				<CardGroup className="d-flex flex-column p-2 cGroup">
 					<Card className="d-flex flex-row m-1 myCard">
 						<div>
 							<Card.Img
@@ -41,10 +38,10 @@ export const Seller = () => {
 								style={{ width: "8em", padding: "2px" }}
 							/>
 							<Card.Footer className="d-flex flex-column justify-content-center border-0 card_footer">
-								<Button variant="dark" className="m-1">
+								<Button id="boton" variant="dark" className="m-1">
 									<i className="fas fa-pen" />
 								</Button>
-								<Button variant="dark" className="m-1">
+								<Button id="boton" variant="dark" className="m-1">
 									<i className="fas fa-trash" />
 								</Button>
 							</Card.Footer>
@@ -74,10 +71,10 @@ export const Seller = () => {
 								style={{ width: "8em", padding: "2px" }}
 							/>
 							<Card.Footer className="d-flex flex-column justify-content-center border-0 card_footer">
-								<Button variant="dark" className="m-1">
+								<Button id="boton" variant="dark" className="m-1">
 									<i className="fas fa-pen" />
 								</Button>
-								<Button variant="dark" className="m-1">
+								<Button id="boton" variant="dark" className="m-1">
 									<i className="fas fa-trash" />
 								</Button>
 							</Card.Footer>
@@ -107,10 +104,10 @@ export const Seller = () => {
 								style={{ width: "8em", padding: "2px" }}
 							/>
 							<Card.Footer className="d-flex flex-column justify-content-center border-0 card_footer">
-								<Button variant="dark" className="m-1">
+								<Button id="boton" variant="dark" className="m-1">
 									<i className="fas fa-pen" />
 								</Button>
-								<Button variant="dark" className="m-1">
+								<Button id="boton" variant="dark" className="m-1">
 									<i className="fas fa-trash" />
 								</Button>
 							</Card.Footer>
