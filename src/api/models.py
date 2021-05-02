@@ -126,10 +126,10 @@ class TransactionLog(db.Model):
     __tablename__ = 'transactionlog'
     id = db.Column(db.Integer, primary_key=True)
     transaction_id  = db.Column(db.Integer) 
-    quantity = db.column(db.Integer)
-    amount = db.column(db.Float)
-    discount_percent = db.column(db.String)
-    status = db.column(db.String) #cart, paid, dispatched, cancelled
+    quantity = db.Column(db.Integer)
+    amount = db.Column(db.Float)
+    discount_percent = db.Column(db.String)
+    status = db.Column(db.String) #cart, paid, dispatched, cancelled
     #this is a number shared by all logs in the same transaction
     seller_id = db.Column(db.Integer, db.ForeignKey("seller.id"))
     seller = db.relationship("Seller", back_populates="transactionlog")
@@ -148,9 +148,9 @@ class TransactionLog(db.Model):
         return {
             "id": self.id,
             "transaction_id": self.transaction_id,
-            "quantity":self.quantity,
-            "amount":self.amount,
-            "discount_percent":self.discount_percent,
+            "quantity": self.quantity,
+            "amount": self.amount,
+            "discount_percent": self.discount_percent,
             "status": self.status,
             "seller_id": self.seller_id,
             "customer_id": self.customer_id,
