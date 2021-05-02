@@ -5,6 +5,7 @@ import os
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Seller,Customer, Product, TransactionLog
 from api.utils import generate_sitemap, APIException
+from sqlalchemy import select
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
@@ -393,12 +394,81 @@ def delete_product(id):
     #
     #PRODUCT ENPOINTS END HERE#       
     #TRANSACTIONLOGS ENPOINTS START HERE#
+
+#USE THIS ROUTE TO ADD PRODUCTS TO THE CART 
+@api.route('/add_to_cart/<int:id>', methods=['POST'])
+@jwt_required()
+def add_prod(id):
+    request_body = request.get_json()
+    log = TransactionLog(
+        token=request_body["token"],
+        quantity=request_body["quantity"],
+        amount=request_body["amount"],
+        discount_percent=request_body["discount_percent"],
+        status=request_body["status"],
+        seller_id=request_body["seller_id"],
+        customer_id=request_body["customer_id"],
+        product_id=request_body["product_id"]
+        )
+
+    db.session.add(customer)
+    db.session.commit()
+    print("Customer created: ", request_body)
+    return jsonify(request_body), 200
     
+#USE THIS ROUTE TO GET THE CART FOR THE CURRENT USER
+@api.route('/get_cart/<int:id>', methods=['GET'])
+@jwt_required()
+def get_current_cart(id):
+    cart = select(all).where(TransactionLog.token == current_token) #CART IS ONLY GOOD FOR THE CURRENT TOKEN, THIS QUERY CHECK LOGS ASSOCIATED TO THE CURRENT TOKEN AND RETURNS ALL THE ITEMS RELATED AND THE CART TOTAL AMOUNT
+    return jsonify(cart), 200  
+
+#USE THIS ROUTE TO MODIFY THE STATUS OF THE ORDERS. STATUS OPTIONS ARE:
+#cart, paid, dispatched, cancelled
+
+@api.route('/order/<string:token>', methods=['PUT'])
+@jwt_required()
+def update_order_status(token):
+    request_body = request.get_json()
+    order = TransactionLog.query.get(token)
+
+    if order is None:
+        raise APIException('Product not found', status_code=404)
+    if "status" in request_body:
+        order.status = request_body["status"]       
     
+    db.session.commit()
+
+    print("Order status updated: ", request_body)
+    return jsonify(request_body), 200
+
+#-------------------------------------------------------------------  
+#USE THIS ROUTE TO UPDATE THE INVENTORY FOR EACH PRODUCT AFTER THE ORDER STATUS UPDATES TO PAID --- CALCULATE ON FRONT END AND SUBMIT THE NEW INVENTORY IN THE JSON REQUEST
+@api.route('/inventory/<id:product_id>', methods=['PUT'])
+@jwt_required()
+def update_inventory(product_id):
+    request_body = request.get_json()
+    product = Product.query.get(product_id)
+
+    if product is None:
+        raise APIException('Product not found', status_code=404)
+    if "quantity" in request_body:
+        product.quantity = request_body["quantity"]       
+    
+    db.session.commit()
+
+    print("Inventory quantity updated: ", request_body)
+    return jsonify(request_body), 200
 
 @api.route('/transactionlog', methods=['GET'])
 def get_logs():
-    all_logs = Product.query.all()
+    all_logs =  session.execute(
+        select(User.name, Address.email_address).
+        join(User.addresses).
+        order_by(User.id, Address.id)
+        )
+    
+    Select * From 
     all_logs_list = list(map(lambda x: x.serialize(), all_logs))
     response_body = {
         "msg": "Listing all sellers"
@@ -422,7 +492,7 @@ def get_single_log(id):
 def create_log():
     request_body = request.get_json()
     log = TransactionLog(
-        transaction_id=request_body["transaction_id"],
+        token=request_body["access_token"],
         seller_id=request_body["seller_id"],
         customer_id=request_body["customer_id"],
         product_id=request_body["product_id"]

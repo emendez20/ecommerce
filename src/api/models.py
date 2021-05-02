@@ -19,8 +19,8 @@ class User(db.Model):
             "id": self.id,
             "email": self.email,
             "is_active" : self.is_active,
-            "seller" : self.seller,
-            "customer" : self.customer
+            # "seller" : self.seller,
+            # "customer" : self.customer
             # do not serialize the password, its a security breach
         }
 
@@ -125,7 +125,7 @@ class Customer(db.Model):
 class TransactionLog(db.Model):
     __tablename__ = 'transactionlog'
     id = db.Column(db.Integer, primary_key=True)
-    transaction_id  = db.Column(db.Integer) 
+    transaction_id  = db.Column(db.String) 
     quantity = db.Column(db.Integer)
     amount = db.Column(db.Float)
     discount_percent = db.Column(db.String)
