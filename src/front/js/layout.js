@@ -10,7 +10,7 @@ import Home from "./pages/home";
 import HomeSignin from "./pages/homeSignin";
 import SigninPage from "./pages/signin";
 import injectContext from "./store/appContext";
-import { SellerView } from "./pages/seller_view";
+import { Seller } from "./pages/seller_view";
 import { SellerViewBuyerSide } from "./pages/seller_view_buyer_side";
 import { Cart } from "./pages/cart_view";
 import { NewProduct } from "./pages/seller_add_prod";
