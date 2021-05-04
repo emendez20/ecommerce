@@ -16,7 +16,25 @@ import { Cart } from "./pages/cart_view";
 import { NewProduct } from "./pages/seller_add_prod";
 import Footer from "./component/footer/index";
 import { Menu } from "./component/menu";
+
 import SellerSignin from "./pages/SellerSignin";
+
+{
+	/*import { NavbarConsumer } from "./component/navbar/navbar-consumer";
+
+import { LogInPage } from "./pages/login-page";
+import { StoreRegisterPage } from "./pages/store-register-page";
+import { AboutPage } from "./pages/about-page";
+import { ConsumerProfile } from "./pages/consumer-profile";
+import { StoreProfile } from "./pages/store-profile";
+import { AppHome } from "./pages/apphome";
+import { StorePage } from "./pages/store-page";
+import { ItemInfoPage } from "./pages/item-info-page";
+import { MyCartPage } from "./pages/my-cart-page";
+
+import { TesteoPage } from "./pages/testeo-page";*/
+}
+
 
 //create your first component
 const Layout = () => {
@@ -28,6 +46,9 @@ const Layout = () => {
 		<div className="d-flex flex-column">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
+
+					{/*<NavbarConsumer className="m-3 fixed-top" />*/}
+
 					<Switch>
 						<Route exact path="/">
 							<Home />
@@ -53,6 +74,17 @@ const Layout = () => {
 						<Route exact path="/cart_view">
 							<Cart />
 						</Route>
+
+						{/*<Route exact path="/login-page">
+							<LogInPage />
+    </Route>
+						<Route exact path="/register-store-page">
+							<StoreRegisterPage />
+						</Route>
+						<Route exact path="/about-page">
+							<AboutPage />
+    </Route>*/}
+
 						<Route exact path="/signin">
 							<SigninPage />
 						</Route>
@@ -71,9 +103,21 @@ const Layout = () => {
 						<Route exact path="/seller_add_prod">
 							<NewProduct />
 						</Route>
-						<Route exact path="/navseller_add_prod">
-							<NewProduct />
+						{/*<Route exact path="/store-profile-page">
+							<StoreProfile />
 						</Route>
+						<Route exact path="/apphome-page">
+							<AppHome />
+						</Route>
+						<Route exact path="/store-page">
+							<StorePage />
+                    </Route>
+						<Route exact path="/item-info-page">
+							<ItemInfoPage />
+                    </Route>
+						<Route exact path="/my-cart-page">
+							<MyCartPage />
+                </Route>*/}
 						<Route>
 							<h1>Not found!</h1>
 						</Route>
