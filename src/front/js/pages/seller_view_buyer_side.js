@@ -16,7 +16,7 @@ export const SellerViewBuyerSide = () => {
 					<img src={marca} style={{ width: "250px" }} />
 				</div>
 				<div className="p-2 bd-highlight align-self-center">
-					<h1>Seller Name</h1>
+					<h1>Nombre de la tienda</h1>
 				</div>
 			</div>
 			<div className="seller_body w-100 m-2">
@@ -24,6 +24,7 @@ export const SellerViewBuyerSide = () => {
 					<Card className="d-flex flex-row m-1 myCard">
 						<div>
 							<Card.Img
+								id="zoom"
 								variant="top"
 								src="https://ticompras.s3.amazonaws.com/Placeholder_seller_logo.jpg"
 								style={{ width: "8em", padding: "2px" }}

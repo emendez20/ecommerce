@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { NavLink as LinkR } from "react-router-dom";
 import { Link as LinkScroll } from "react-scroll";
 import { AiOutlineMenuFold } from "react-icons/ai";
+import { MdShoppingCart } from "react-icons/md";
 
 export const Nav = styled.nav`
 	background: transparent !important;
@@ -9,6 +10,7 @@ export const Nav = styled.nav`
 	display: flex !important;
 	justify-content: center !important;
 	font-weight: 700 !important;
+	position: sticky !important;
 `;
 export const NavLink = styled(LinkR)`
 	color: #fff !important;
@@ -37,6 +39,10 @@ export const NavIcon = styled.div`
 	}
 `;
 export const Bars = styled(AiOutlineMenuFold)`
+	font-size: 2 rem !important;
+	transform: translate(-50%, -15%) !important;
+`;
+export const Bars2 = styled(MdShoppingCart)`
 	font-size: 2 rem !important;
 	transform: translate(-50%, -15%) !important;
 `;

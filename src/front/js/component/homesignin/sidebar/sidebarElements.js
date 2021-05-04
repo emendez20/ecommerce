@@ -38,11 +38,11 @@ export const SidebarWrapper = styled.div`
 export const SidebarMenu = styled.ul`
 	display: grid !important;
 	grid-template-columns: 1fr !important;
-	grid-template-rows: repeat(3, 80px) !important;
+	grid-template-rows: repeat(2, 80px) !important;
 	text-align: center !important;
 
 	@media screen and (max-width: 480px) {
-		grid-template-rows: repeat(3, 60px) !important;
+		grid-template-rows: repeat(2, 60px) !important;
 	}
 `;
 

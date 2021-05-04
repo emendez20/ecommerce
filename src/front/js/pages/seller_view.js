@@ -5,6 +5,7 @@ import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import Button from "react-bootstrap/Button";
 import marca from "../../img/ti.png";
+import { Link } from "react-router-dom";
 export const Seller = () => {
 	const { store, actions } = useContext(Context);
 
@@ -23,9 +24,11 @@ export const Seller = () => {
 					<h2>Inventario</h2>
 				</div>
 				<div className="p-2 bd-highlight align-self-center">
-					<Button id="boton" variant="dark" className="m-1">
-						<i className="fas fa-plus" />
-					</Button>
+					<Link to="/seller_add_prod">
+						<Button id="boton" variant="dark" className="m-1">
+							<i className="fas fa-plus" />
+						</Button>
+					</Link>
 				</div>
 			</div>
 			<div className="seller_body">

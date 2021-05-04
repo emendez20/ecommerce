@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import SideBar from "../sidebar/index";
+import SideBar from "../sidebar/indexSeller";
 import { HeroContainer, HeroContent, HeroItems, HeroH1, HeroP, HeroBtn } from "../hero/heroElements";
-import Navbar from "../navbar/index";
+import Navbar from "../navbar/indexSeller";
 const Hero = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const toggle = () => {
