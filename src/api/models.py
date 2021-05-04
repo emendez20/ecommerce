@@ -34,6 +34,7 @@ class Seller(db.Model):
     company_phone  = db.Column(db.String(80), unique=False, nullable=False)
     company_rep_name  = db.Column(db.String(80), unique=False, nullable=False)
     company_rep_number  = db.Column(db.String(80), unique=False, nullable=False)
+    logo_url = db.Column(db.String(300))
 
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     user = relationship("User", back_populates="seller")
@@ -55,7 +56,8 @@ class Seller(db.Model):
             "company_phone": self.company_phone,
             "company_rep_name": self.company_rep_name,
             "company_rep_number": self.company_rep_number,
-            "user_id": self.user_id
+            "user_id": self.user_id,
+            "logo_url": self.logo_url
             # do not serialize the password, its a security breach
         }
 
@@ -69,6 +71,9 @@ class Product(db.Model):
     quantity = db.Column(db.Integer)
     price = db.Column(db.Float, unique=False, nullable=False)
     discount = db.Column(db.Float, unique=False, nullable=False)
+    img1 = db.Column(db.String(300))
+    img2 = db.Column(db.String(300))
+    img3 = db.Column(db.String(300))
 
     seller_id = db.Column(db.Integer, db.ForeignKey("seller.id"))
     seller = db.relationship("Seller", back_populates="product")
@@ -88,7 +93,10 @@ class Product(db.Model):
             "quantity": self.quantity,
             "price": self.price,
             "discount": self.discount,
-            "seller_id": self.seller_id
+            "seller_id": self.seller_id,
+            "img1": self.img1,
+            "img2": self.img2,
+            "img3": self.img3
             # do not serialize the password, its a security breach
         }         
 
