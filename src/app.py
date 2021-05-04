@@ -10,12 +10,17 @@ from api.utils import APIException, generate_sitemap
 from api.models import db
 from api.routes import api
 from api.admin import setup_admin
-#from models import Person
+
+from flask_jwt_extended import JWTManager
+
 
 ENV = os.getenv("FLASK_ENV")
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')
 app = Flask(__name__)
 app.url_map.strict_slashes = False
+
+app.config["JWT_SECRET_KEY"] = os.environ.get('FLASK_APP_KEY')  # Change this "super secret" with something else!
+jwt = JWTManager(app)
 
 # database condiguration
 if os.getenv("DATABASE_URL") is not None:
@@ -26,6 +31,10 @@ else:
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 MIGRATE = Migrate(app, db)
 db.init_app(app)
+
+# Allow CORS requests to this API
+app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET") # Change this!
+jwt = JWTManager(app)
 
 # Allow CORS requests to this API
 CORS(app)
