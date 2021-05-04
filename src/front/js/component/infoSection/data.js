@@ -1,4 +1,5 @@
 import carro from "../../../img/img1.jpg";
+import signin from "../../../img/signin.png";
 export const homeObjOne = {
 	id: "about",
 	lightBg: true,
@@ -13,7 +14,8 @@ export const homeObjOne = {
 	alt: "Car",
 	dark: false,
 	primary: false,
-	darkText: true
+	darkText: true,
+	direccion: "home"
 };
 
 export const homeObjTwo = {
@@ -41,12 +43,13 @@ export const homeObjThree = {
 	lightTextDesc: false,
 	topLine: "únete a nuestro equipo ",
 	headline: "crear una cuenta es muy fácil",
-	description: "obten acceso a nuestra app que te permite comprar a empresas nacionales y vender.",
+	description: "registrarse no te toma mucho tiempo y los beneficiosson grandes.",
 	buttonLabel: "registrate",
 	imgStart: false,
-	img: carro,
+	img: signin,
 	alt: "Car",
 	dark: false,
 	primary: false,
-	darkText: true
+	darkText: true,
+	direccion: "home"
 };

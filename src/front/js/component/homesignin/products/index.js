@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
 	ProductsContainer,
 	ProductsWrapper,
@@ -25,7 +26,9 @@ const Products = ({ heading, data }) => {
 									<ProductTitle>{product.name} </ProductTitle>
 									<ProductDesc>{product.desc} </ProductDesc>
 									<ProductPrice>{product.price} </ProductPrice>
-									<ProductButton>{product.button} </ProductButton>
+									<Link to={product.ruta}>
+										<ProductButton>{product.button} </ProductButton>
+									</Link>
 								</ProductInfo>
 							</ProductCard>
 						);

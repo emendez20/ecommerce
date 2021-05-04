@@ -8,28 +8,21 @@ import {
 	SidebarLink,
 	SideBtnWrap,
 	SidebarRoute
-} from "./sidebarsElements";
+} from "./sidebarElements";
 const SideBar = ({ isOpen, toggle }) => {
 	return (
 		<>
 			<SidebarContainer isOpen={isOpen} onClick={toggle}>
-				<Icon onClick={toggle}>
+				<Icon>
 					<CloseIcon />
 				</Icon>
 				<SidebarWrapper>
 					<SidebarMenu>
-						<SidebarLink to="about" onClick={toggle}>
-							decide
-						</SidebarLink>
-						<SidebarLink to="services" onClick={toggle}>
-							servicios
-						</SidebarLink>
-						<SidebarLink to="signup" onClick={toggle}>
-							Únete
-						</SidebarLink>
+						<SidebarLink to="/sellerprofile">Perfil</SidebarLink>
+						<SidebarLink to="/seller_view">Inventario</SidebarLink>
 					</SidebarMenu>
 					<SideBtnWrap>
-						<SidebarRoute to="/signin"> Iniciar sesíon</SidebarRoute>
+						<SidebarRoute to="/costumer"> Sign Out</SidebarRoute>
 					</SideBtnWrap>
 				</SidebarWrapper>
 			</SidebarContainer>

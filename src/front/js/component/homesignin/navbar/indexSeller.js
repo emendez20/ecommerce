@@ -9,7 +9,6 @@ const Navbar = ({ toggle }) => {
 				<NavIcon>
 					<p>Menu</p>
 					<Bars onClick={toggle} />
-					<Bars2 />
 				</NavIcon>
 			</Nav>
 		</>

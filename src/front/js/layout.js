@@ -7,7 +7,7 @@ import { Sales } from "./pages/sales/Sales";
 import { Costumer } from "./pages/costumer/costumer";
 import { PurchaseCostumer } from "./pages/purchaseCostumer/purchaseCostumer";
 import Home from "./pages/home";
-import HomeSignin from "./pages/homeSignin";
+import HomeSignin from "./pages/CostumerSignin";
 import SigninPage from "./pages/signin";
 import injectContext from "./store/appContext";
 import { Seller } from "./pages/seller_view";
@@ -16,6 +16,9 @@ import { Cart } from "./pages/cart_view";
 import { NewProduct } from "./pages/seller_add_prod";
 import Footer from "./component/footer/index";
 import { Menu } from "./component/menu";
+
+import SellerSignin from "./pages/SellerSignin";
+
 {
 	/*import { NavbarConsumer } from "./component/navbar/navbar-consumer";
 
@@ -32,6 +35,7 @@ import { MyCartPage } from "./pages/my-cart-page";
 import { TesteoPage } from "./pages/testeo-page";*/
 }
 
+
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -42,13 +46,18 @@ const Layout = () => {
 		<div className="d-flex flex-column">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
+
 					{/*<NavbarConsumer className="m-3 fixed-top" />*/}
+
 					<Switch>
 						<Route exact path="/">
 							<Home />
 						</Route>
 						<Route exact path="/homesignin">
 							<HomeSignin />
+						</Route>
+						<Route exact path="/Sellersignin">
+							<SellerSignin />
 						</Route>
 						<Route exact path="/seller_view">
 							<Seller />
@@ -65,6 +74,7 @@ const Layout = () => {
 						<Route exact path="/cart_view">
 							<Cart />
 						</Route>
+
 						{/*<Route exact path="/login-page">
 							<LogInPage />
     </Route>
@@ -74,6 +84,7 @@ const Layout = () => {
 						<Route exact path="/about-page">
 							<AboutPage />
     </Route>*/}
+
 						<Route exact path="/signin">
 							<SigninPage />
 						</Route>
@@ -107,7 +118,6 @@ const Layout = () => {
 						<Route exact path="/my-cart-page">
 							<MyCartPage />
                 </Route>*/}
-
 						<Route>
 							<h1>Not found!</h1>
 						</Route>

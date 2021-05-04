@@ -23,46 +23,6 @@ const Footer = () => {
 	return (
 		<>
 			<FooterContainer>
-				<FooterWrap>
-					<FooterLinkContainer>
-						<FooterLinksWrapper>
-							<FooterLinksItem>
-								<FooterLinkTitle> About us</FooterLinkTitle>
-								<FooterLink to="/signin">How it works</FooterLink>
-								<FooterLink to="/signin">testimonials</FooterLink>
-								<FooterLink to="/signin">careers</FooterLink>
-								<FooterLink to="/signin">investors</FooterLink>
-								<FooterLink to="/signin">Terns of service</FooterLink>
-							</FooterLinksItem>
-							<FooterLinksItem>
-								<FooterLinkTitle> About us</FooterLinkTitle>
-								<FooterLink to="/signin">How it works</FooterLink>
-								<FooterLink to="/signin">testimonials</FooterLink>
-								<FooterLink to="/signin">careers</FooterLink>
-								<FooterLink to="/signin">investors</FooterLink>
-								<FooterLink to="/signin">Terns of service</FooterLink>
-							</FooterLinksItem>
-						</FooterLinksWrapper>
-						<FooterLinksWrapper>
-							<FooterLinksItem>
-								<FooterLinkTitle> About us</FooterLinkTitle>
-								<FooterLink to="/signin">How it works</FooterLink>
-								<FooterLink to="/signin">testimonials</FooterLink>
-								<FooterLink to="/signin">careers</FooterLink>
-								<FooterLink to="/signin">investors</FooterLink>
-								<FooterLink to="/signin">Terns of service</FooterLink>
-							</FooterLinksItem>
-							<FooterLinksItem>
-								<FooterLinkTitle> Social Media</FooterLinkTitle>
-								<FooterLink to="/signin">Instagram</FooterLink>
-								<FooterLink to="/signin">Facebook</FooterLink>
-								<FooterLink to="/signin">Youtube</FooterLink>
-								<FooterLink to="/signin">Twitter</FooterLink>
-								<FooterLink to="/signin">GitHub</FooterLink>
-							</FooterLinksItem>
-						</FooterLinksWrapper>
-					</FooterLinkContainer>
-				</FooterWrap>
 				<SocialMedia>
 					<SocialMediaWrap>
 						<SocialLogo to="/homesignin" onClick={toggleHome}>

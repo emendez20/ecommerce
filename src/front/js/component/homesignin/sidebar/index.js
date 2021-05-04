@@ -18,12 +18,10 @@ const SideBar = ({ isOpen, toggle }) => {
 				</Icon>
 				<SidebarWrapper>
 					<SidebarMenu>
-						<SidebarLink to="Perfil">Perfil</SidebarLink>
-						<SidebarLink to="productos">productos</SidebarLink>
-						<SidebarLink to="todo">todo</SidebarLink>
+						<SidebarLink to="/costumer">Perfil</SidebarLink>
 					</SidebarMenu>
 					<SideBtnWrap>
-						<SidebarRoute to="/signin"> Sign Out</SidebarRoute>
+						<SidebarRoute to="/costumer"> Sign Out</SidebarRoute>
 					</SideBtnWrap>
 				</SidebarWrapper>
 			</SidebarContainer>

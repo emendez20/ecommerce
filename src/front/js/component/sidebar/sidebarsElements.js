@@ -36,11 +36,11 @@ export const SidebarWrapper = styled.div`
 export const SidebarMenu = styled.ul`
 	display: grid !important;
 	grid-template-columns: 1fr !important;
-	grid-template-rows: repeat(6, 80px) !important;
+	grid-template-rows: repeat(4, 80px) !important;
 	text-align: center !important;
 
 	@media screen and (max-width: 480px) {
-		grid-template-rows: repeat(6, 60px) !important;
+		grid-template-rows: repeat(4, 60px) !important;
 	}
 `;
 
