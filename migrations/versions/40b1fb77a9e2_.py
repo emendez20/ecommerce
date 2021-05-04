@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: d9d2160a8c06
+Revision ID: 40b1fb77a9e2
 Revises: 
-Create Date: 2021-05-02 02:08:27.382131
+Create Date: 2021-05-04 03:30:50.573292
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'd9d2160a8c06'
+revision = '40b1fb77a9e2'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -46,6 +46,7 @@ def upgrade():
     sa.Column('company_phone', sa.String(length=80), nullable=False),
     sa.Column('company_rep_name', sa.String(length=80), nullable=False),
     sa.Column('company_rep_number', sa.String(length=80), nullable=False),
+    sa.Column('logo_url', sa.String(length=300), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -59,13 +60,16 @@ def upgrade():
     sa.Column('quantity', sa.Integer(), nullable=True),
     sa.Column('price', sa.Float(), nullable=False),
     sa.Column('discount', sa.Float(), nullable=False),
+    sa.Column('img1', sa.String(length=300), nullable=True),
+    sa.Column('img2', sa.String(length=300), nullable=True),
+    sa.Column('img3', sa.String(length=300), nullable=True),
     sa.Column('seller_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['seller_id'], ['seller.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('transactionlog',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('transaction_id', sa.Integer(), nullable=True),
+    sa.Column('transaction_id', sa.String(), nullable=True),
     sa.Column('quantity', sa.Integer(), nullable=True),
     sa.Column('amount', sa.Float(), nullable=True),
     sa.Column('discount_percent', sa.String(), nullable=True),

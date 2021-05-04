@@ -86,6 +86,7 @@ def create_user():
             company_phone=request_body["company_phone"],
             company_rep_name=request_body["company_rep_name"],
             company_rep_number=request_body["company_rep_number"],
+            logo_url=request_body["logo_url"],
             user_id=user_id)
         db.session.add(seller)
         
@@ -341,7 +342,11 @@ def create_product():
         quantity=request_body["quantity"],
         price=request_body["price"],
         discount=request_body["discount"],
-        seller_id=request_body["seller_id"]
+        seller_id=request_body["seller_id"],
+        img1=request_body["img1"],
+        img2=request_body["img2"],
+        img3=request_body["img3"]
+
         )
 
     db.session.add(customer)
@@ -444,7 +449,7 @@ def update_order_status(token):
 
 #-------------------------------------------------------------------  
 #USE THIS ROUTE TO UPDATE THE INVENTORY FOR EACH PRODUCT AFTER THE ORDER STATUS UPDATES TO PAID --- CALCULATE ON FRONT END AND SUBMIT THE NEW INVENTORY IN THE JSON REQUEST
-@api.route('/inventory/<id:product_id>', methods=['PUT'])
+@api.route('/inventory/<int:product_id>', methods=['PUT'])
 @jwt_required()
 def update_inventory(product_id):
     request_body = request.get_json()
