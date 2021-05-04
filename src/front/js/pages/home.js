@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Navbar from "../component/navbar/index";
+import Navbar from "../component/navbarss/index";
 import SideBar from "../component/sidebar/index";
 import HeroSection from "../component/herosection/index";
 import InfoSection from "../component/infoSection/index";

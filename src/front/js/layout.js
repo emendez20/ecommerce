@@ -14,14 +14,10 @@ import { Seller } from "./pages/seller_view";
 import { SellerViewBuyerSide } from "./pages/seller_view_buyer_side";
 import { Cart } from "./pages/cart_view";
 import { NewProduct } from "./pages/seller_add_prod";
-
-import { Navbar } from "./component/navbar";
-<<<<<<< HEAD
 import Footer from "./component/footer/index";
 import { Menu } from "./component/menu";
-=======
-import { Footer } from "./component/footer";
-import { NavbarConsumer } from "./component/navbar/navbar-consumer";
+{
+	/*import { NavbarConsumer } from "./component/navbar/navbar-consumer";
 
 import { LogInPage } from "./pages/login-page";
 import { StoreRegisterPage } from "./pages/store-register-page";
@@ -33,8 +29,8 @@ import { StorePage } from "./pages/store-page";
 import { ItemInfoPage } from "./pages/item-info-page";
 import { MyCartPage } from "./pages/my-cart-page";
 
-import { TesteoPage } from "./pages/testeo-page";
->>>>>>> 2e9ac3a (added)
+import { TesteoPage } from "./pages/testeo-page";*/
+}
 
 //create your first component
 const Layout = () => {
@@ -46,10 +42,7 @@ const Layout = () => {
 		<div className="d-flex flex-column">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-<<<<<<< HEAD
-=======
-					<NavbarConsumer className="m-3 fixed-top" />
->>>>>>> 2e9ac3a (added)
+					{/*<NavbarConsumer className="m-3 fixed-top" />*/}
 					<Switch>
 						<Route exact path="/">
 							<Home />
@@ -61,7 +54,6 @@ const Layout = () => {
 							<Seller />
 							<Footer />
 						</Route>
-<<<<<<< HEAD
 						<Route exact path="/seller_view_buyer_side">
 							<SellerViewBuyerSide />
 							<Footer />
@@ -72,21 +64,19 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/cart_view">
 							<Cart />
-=======
-						<Route exact path="/login-page">
-							<LogInPage />
 						</Route>
+						{/*<Route exact path="/login-page">
+							<LogInPage />
+    </Route>
 						<Route exact path="/register-store-page">
 							<StoreRegisterPage />
 						</Route>
 						<Route exact path="/about-page">
 							<AboutPage />
->>>>>>> 2e9ac3a (added)
-						</Route>
+    </Route>*/}
 						<Route exact path="/signin">
 							<SigninPage />
 						</Route>
-<<<<<<< HEAD
 						<Route exact path="/sellerprofile">
 							<SellerProfile />
 						</Route>
@@ -101,8 +91,8 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/seller_add_prod">
 							<NewProduct />
-=======
-						<Route exact path="/store-profile-page">
+						</Route>
+						{/*<Route exact path="/store-profile-page">
 							<StoreProfile />
 						</Route>
 						<Route exact path="/apphome-page">
@@ -110,17 +100,14 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/store-page">
 							<StorePage />
-						</Route>
+                    </Route>
 						<Route exact path="/item-info-page">
 							<ItemInfoPage />
-						</Route>
+                    </Route>
 						<Route exact path="/my-cart-page">
 							<MyCartPage />
->>>>>>> 2e9ac3a (added)
-						</Route>
-						<Route exact path="/navseller_add_prod">
-							<NewProduct />
-						</Route>
+                </Route>*/}
+
 						<Route>
 							<h1>Not found!</h1>
 						</Route>
