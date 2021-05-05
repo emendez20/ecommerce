@@ -26,7 +26,9 @@ export const NewProduct = () => {
 	return (
 		<div id="body">
 			<form onSubmit={handleSubmit}>
-				<h1>Agregar Nuevo Producto</h1>
+				<h1>
+					<strong>Agregar Nuevo Producto</strong>
+				</h1>
 
 				<label>
 					Nombre:

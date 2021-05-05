@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "../buttonElements";
 import { UndrawTabs, UndrawAddToCart, UndrawResponsive } from "react-undraw-illustrations";
+
 import {
 	InfoContainer,
 	InfoWrapper,
@@ -44,7 +45,6 @@ const InfoSection = ({
 								<Subtitle darkText={darkText}>{description} </Subtitle>
 								<BtnWrap>
 									<Button
-										to={direccion}
 										smooth={true}
 										duration={500}
 										spy={true}
@@ -52,8 +52,9 @@ const InfoSection = ({
 										offset={-80}
 										primary={primary ? 1 : 0}
 										dark={dark ? 1 : 0}
-										dark2={dark2 ? 1 : 0}>
-										{buttonLabel}{" "}
+										dark2={dark2 ? 1 : 0}
+										to={direccion}>
+										{buttonLabel}
 									</Button>
 								</BtnWrap>
 							</TextWrapper>

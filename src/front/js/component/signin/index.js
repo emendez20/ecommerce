@@ -8,8 +8,7 @@ import {
 	FormH1,
 	FormLabel,
 	FormInput,
-	FormButton,
-	Text
+	FormButton
 } from "./signinElements";
 import { Link, useHistory } from "react-router-dom";
 import { Context } from "../../store/appContext";
@@ -31,8 +30,9 @@ const SignIn = () => {
 	// }, []);
 	return (
 		<>
-			<Container>
+			<Container fluid>
 				<FormWrap>
+<<<<<<< HEAD
 					<Icon to="/">Ticompras</Icon>
 					<FormContent>
 						<Form action="#">
@@ -52,6 +52,19 @@ const SignIn = () => {
 								</Link>
 							</FormButton>
 							<Text>Forgot Password</Text>
+=======
+					<Icon to="/">
+						<i className="fas fa-arrow-circle-left" />
+					</Icon>
+					<FormContent>
+						<Form action="#">
+							<FormH1> ¡Bienvenido!</FormH1>
+							<FormLabel htmlFor="for">Correo electrónico</FormLabel>
+							<FormInput type="email" required />
+							<FormLabel htmlFor="for">Contraseña</FormLabel>
+							<FormInput type="password" required />
+							<FormButton type="submit">Iniciar Sesión</FormButton>
+>>>>>>> 0fa99cc479ac574489ec8b752fc31bb17e481aae
 						</Form>
 					</FormContent>
 				</FormWrap>

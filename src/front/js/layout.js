@@ -18,6 +18,8 @@ import Footer from "./component/footer/index";
 import { Menu } from "./component/menu";
 
 import SellerSignin from "./pages/SellerSignin";
+import { SellerRegister } from "./pages/seller-register";
+import { CostumerRegister } from "./pages/costumer-register";
 
 {
 	/*import { NavbarConsumer } from "./component/navbar/navbar-consumer";
@@ -45,8 +47,11 @@ const Layout = () => {
 		<div className="d-flex flex-column">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
+<<<<<<< HEAD
 					{/*<NavbarConsumer className="m-3 fixed-top" />*/}
 
+=======
+>>>>>>> 0fa99cc479ac574489ec8b752fc31bb17e481aae
 					<Switch>
 						<Route exact path="/">
 							<Home />
@@ -116,6 +121,12 @@ const Layout = () => {
 						<Route exact path="/my-cart-page">
 							<MyCartPage />
                 </Route>*/}
+						<Route exact path="/seller-register">
+							<SellerRegister />
+						</Route>
+						<Route exact path="/costumer-register">
+							<CostumerRegister />
+						</Route>
 						<Route>
 							<h1>Not found!</h1>
 						</Route>
