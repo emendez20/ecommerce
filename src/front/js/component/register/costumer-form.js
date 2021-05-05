@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 //Style
 //import "../../../styles/login.scss";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Container } from "react-bootstrap";
 
 //Img
 //import rigoImageUrl from "../../img/rigo-baby.jpg";
@@ -13,6 +13,9 @@ import { Form, Button } from "react-bootstrap";
 export const CostumerForm = () => {
 	return (
 		<Form>
+			<h4>
+				<strong>¡Bienvenido a Ticompras!</strong>
+			</h4>
 			<Form.Group controlId="controlEmail">
 				<Form.Label>Nombre Completo:</Form.Label>
 				<Form.Control type="text" placeholder=" " required />
@@ -38,13 +41,13 @@ export const CostumerForm = () => {
 			</Button>
 			<hr />
 
-			<div>
+			<Container style={{ color: "black" }}>
 				<small className="text-muted">
 					Al crear una cuenta aceptas los
 					<Link to="/"> terminos y condiciones de uso </Link>
 					de Ticompras.
 				</small>
-			</div>
+			</Container>
 		</Form>
 	);
 };

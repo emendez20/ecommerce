@@ -70,7 +70,7 @@ export const SellerForm = () => {
 			</Button>
 
 			<hr />
-			<Container style={{ background: "#dfe6e9", color: "black" }}>
+			<Container style={{ color: "black" }}>
 				<small className="text-muted">
 					Al crear una cuenta aceptas los
 					<Link to="/"> terminos y condiciones de uso </Link>
