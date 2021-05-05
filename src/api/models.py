@@ -37,7 +37,7 @@ class Seller(db.Model):
     logo_url = db.Column(db.String(300))
 
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    user = relationship("User", back_populates="seller")
+    user = db.relationship("User", back_populates="seller")
 
     product = db.relationship("Product",back_populates="seller")
     transactionlog = db.relationship("TransactionLog",back_populates="seller")
@@ -109,7 +109,7 @@ class Customer(db.Model):
     address = db.Column(db.String(280), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, default=True,nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    user = relationship("User", back_populates="customer")
+    user = db.relationship("User", back_populates="customer")
     transactionlog = db.relationship("TransactionLog",back_populates="customer")
     #order_id = db.relationship('Order', backref='customer', lazy=True)
 

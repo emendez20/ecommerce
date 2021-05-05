@@ -35,7 +35,6 @@ import { MyCartPage } from "./pages/my-cart-page";
 import { TesteoPage } from "./pages/testeo-page";*/
 }
 
-
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -46,7 +45,6 @@ const Layout = () => {
 		<div className="d-flex flex-column">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-
 					{/*<NavbarConsumer className="m-3 fixed-top" />*/}
 
 					<Switch>

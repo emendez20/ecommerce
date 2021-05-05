@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import getState from "./flux.js";
+import { Link, useHistory } from "react-router-dom";
 
 // Don't change, here is where we initialize our context, by default it's just going to be null.
 export const Context = React.createContext(null);
@@ -20,16 +21,24 @@ const injectContext = PassedComponent => {
 					})
 			})
 		);
+		// const { store, actions } = useContext(Context);
+		// const history = useHistory();
 
-		useEffect(() => {
-			/**
-			 * EDIT THIS!
-			 * This function is the equivalent to "window.onLoad", it only runs once on the entire application lifetime
-			 * you should do your ajax requests or fetch api requests here. Do not use setState() to save data in the
-			 * store, instead use actions, like this:
-			 **/
-			state.actions.getMessage(); // <---- calling this function from the flux.js actions
-		}, []);
+		// useEffect(() => {
+		// 	state.actions.getToken();
+		// 	if (!state.store.login) {
+		// 		history.push("/");
+		// 	}
+		// }, []);
+		// useEffect(() => {
+		// 	/**
+		// 	 * EDIT THIS!
+		// 	 * This function is the equivalent to "window.onLoad", it only runs once on the entire application lifetime
+		// 	 * you should do your ajax requests or fetch api requests here. Do not use setState() to save data in the
+		// 	 * store, instead use actions, like this:
+		// 	 **/
+		// 	state.actions.getMessage(); // <---- calling this function from the flux.js actions
+		// }, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,
 		// the context will now have a getStore, getActions and setStore functions available, because they were declared

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
 	SidebarContainer,
 	Icon,
@@ -9,7 +9,18 @@ import {
 	SideBtnWrap,
 	SidebarRoute
 } from "./sidebarElements";
+import { Link, useHistory, Redirect } from "react-router-dom";
+import { Context } from "../../../store/appContext";
 const SideBar = ({ isOpen, toggle }) => {
+	const { store, actions } = useContext(Context);
+	// const history = useHistory();
+
+	// useEffect(() => {
+	// 	actions.getToken();
+	// 	if (store.login == false) {
+	// 		history.push("/");
+	// 	}
+	// }, []);
 	return (
 		<>
 			<SidebarContainer isOpen={isOpen} onClick={toggle}>
@@ -20,9 +31,18 @@ const SideBar = ({ isOpen, toggle }) => {
 					<SidebarMenu>
 						<SidebarLink to="/costumer">Perfil</SidebarLink>
 					</SidebarMenu>
-					<SideBtnWrap>
-						<SidebarRoute to="/costumer"> Sign Out</SidebarRoute>
-					</SideBtnWrap>
+
+					<Link
+						type="submit"
+						to="/signin"
+						className="dropdown-item"
+						id="drop-item"
+						onClick={() => {
+							actions.logout();
+							<Redirect to="signin" />;
+						}}>
+						Log Out
+					</Link>
 				</SidebarWrapper>
 			</SidebarContainer>
 		</>

@@ -1,7 +1,7 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
-import os
+import redis
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Seller,Customer, Product, TransactionLog
 from api.utils import generate_sitemap, APIException
@@ -10,11 +10,13 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
+from flask_jwt_extended import get_jwt
 from passlib.hash import sha256_crypt
 
-
-
 api = Blueprint('api', __name__)
+
+
+
 
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
@@ -28,20 +30,34 @@ def handle_hello():
 # create_access_token() function is used to actually generate the JWT.
 @api.route("/login", methods=["POST"])
 def create_token():
-    email = request.json.get("email", None)
-    password = request.json.get("password", None)
+    email = request.json.get("email")
+    password = request.json.get("password")
 
     # Query your database for email and password
-    user = User.filter.query(email=email, password=password).first()
+    user = User.query.filter_by(email=email, password=password).first()
+   
     if user is None:
         # the user was not found on the database
         return jsonify({"msg": "Bad username or password"}), 401
     
     # create a new token with the user id inside
     access_token = create_access_token(identity=user.id)
-    return jsonify({ "token": access_token, "user_id": user.id })
+    return jsonify({"token": access_token, "user_id": user.id})
 
 #USER ENPOINTS START HERE#
+
+# Endpoint for revoking the current users access token. Save the JWTs unique
+# identifier (jti) in redis. Also set a Time to Live (TTL)  when storing the JWT
+# so that it will automatically be cleared out of redis after the token expires.
+# Endpoint for revoking the current users access token. Save the JWTs unique
+# identifier (jti) in redis. Also set a Time to Live (TTL)  when storing the JWT
+# so that it will automatically be cleared out of redis after the token expires.
+@api.route("/logout", methods=["DELETE"])
+@jwt_required()
+def logout():
+    jti = get_jwt()["jti"]
+    jwt_redis_blocklist.set(jti, "", ex=ACCESS_EXPIRES)
+    return jsonify(msg="Access token revoked")
 
 #LIST ALL USERS#
 @api.route('/user', methods=['GET'])

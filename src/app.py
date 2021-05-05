@@ -2,6 +2,9 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 import os
+from datetime import timedelta
+
+import redis
 from flask import Flask, request, jsonify, url_for, send_from_directory
 from flask_migrate import Migrate
 from flask_swagger import swagger
@@ -13,14 +16,29 @@ from api.admin import setup_admin
 
 from flask_jwt_extended import JWTManager
 
-
+ACCESS_EXPIRES = timedelta(hours=1)
 ENV = os.getenv("FLASK_ENV")
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
 app.config["JWT_SECRET_KEY"] = os.environ.get('FLASK_APP_KEY')  # Change this "super secret" with something else!
+
 jwt = JWTManager(app)
+
+jwt_redis_blocklist = redis.StrictRedis(
+    host="https://3001-aqua-ostrich-dwztqmry.ws-us03.gitpod.io/", port=3001, db=0, decode_responses=True
+)
+
+app.config['JWT_TOKEN_LOCATION'] = ['headers', 'query_string']
+app.config['PROPAGATE_EXCEPTIONS'] = True
+
+# Callback function to check if a JWT exists in the redis blocklist
+@jwt.token_in_blocklist_loader
+def check_if_token_is_revoked(jwt_header, jwt_payload):
+    jti = jwt_payload["jti"]
+    token_in_redis = jwt_redis_blocklist.get(jti)
+    return token_in_redis is not None
 
 # database condiguration
 if os.getenv("DATABASE_URL") is not None:
@@ -34,6 +52,8 @@ db.init_app(app)
 
 # Allow CORS requests to this API
 app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET") # Change this!
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = ACCESS_EXPIRES
+
 jwt = JWTManager(app)
 
 # Allow CORS requests to this API
