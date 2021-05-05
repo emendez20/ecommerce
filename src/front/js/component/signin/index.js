@@ -8,25 +8,25 @@ import {
 	FormH1,
 	FormLabel,
 	FormInput,
-	FormButton,
-	Text
+	FormButton
 } from "./signinElements";
 
 const SignIn = () => {
 	return (
 		<>
-			<Container>
+			<Container fluid>
 				<FormWrap>
-					<Icon to="/"> Ticompras</Icon>
+					<Icon to="/">
+						<i className="fas fa-arrow-circle-left" />
+					</Icon>
 					<FormContent>
 						<Form action="#">
-							<FormH1> Sign in to your account</FormH1>
-							<FormLabel htmlFor="for"> Email</FormLabel>
+							<FormH1> ¡Bienvenido!</FormH1>
+							<FormLabel htmlFor="for">Correo electrónico</FormLabel>
 							<FormInput type="email" required />
-							<FormLabel htmlFor="for"> Password</FormLabel>
+							<FormLabel htmlFor="for">Contraseña</FormLabel>
 							<FormInput type="password" required />
-							<FormButton type="submit"> Continue</FormButton>
-							<Text>Forgot Password</Text>
+							<FormButton type="submit">Iniciar Sesión</FormButton>
 						</Form>
 					</FormContent>
 				</FormWrap>

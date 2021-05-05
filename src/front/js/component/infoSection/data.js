@@ -5,17 +5,17 @@ export const homeObjOne = {
 	lightBg: true,
 	lightText: false,
 	lightTextDesc: false,
-	topLine: "flexible",
-	headline: "decide lo que quieras ser",
-	description: "obten acceso a nuestra app que te permite comprar a empresas nacionales y vender.",
-	buttonLabel: " registrate",
+	topLine: "Ticompras",
+	headline: "Compra fácil, seguro y rápido",
+	description: "Compra en el mejor sitio de tiendas Pymes del país",
+	buttonLabel: "Registrate",
 	imgStart: false,
 	img: carro,
 	alt: "Car",
 	dark: false,
 	primary: false,
 	darkText: true,
-	direccion: "home"
+	direccion: "/costumer-register"
 };
 
 export const homeObjTwo = {
@@ -41,15 +41,15 @@ export const homeObjThree = {
 	lightBg: true,
 	lightText: false,
 	lightTextDesc: false,
-	topLine: "únete a nuestro equipo ",
-	headline: "crear una cuenta es muy fácil",
-	description: "registrarse no te toma mucho tiempo y los beneficiosson grandes.",
-	buttonLabel: "registrate",
+	topLine: "Abra su tienda Pyme",
+	headline: "Vender en Ticompras es muy fácil",
+	description: "Registrarse no te toma mucho tiempo y los beneficios son muchos.",
+	buttonLabel: "Inscribase",
 	imgStart: false,
 	img: signin,
 	alt: "Car",
 	dark: false,
 	primary: false,
 	darkText: true,
-	direccion: "home"
+	direccion: "/seller-register"
 };

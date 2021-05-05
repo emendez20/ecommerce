@@ -18,6 +18,8 @@ import Footer from "./component/footer/index";
 import { Menu } from "./component/menu";
 
 import SellerSignin from "./pages/SellerSignin";
+import { SellerRegister } from "./pages/seller-register";
+import { CostumerRegister } from "./pages/costumer-register";
 
 {
 	/*import { NavbarConsumer } from "./component/navbar/navbar-consumer";
@@ -35,7 +37,6 @@ import { MyCartPage } from "./pages/my-cart-page";
 import { TesteoPage } from "./pages/testeo-page";*/
 }
 
-
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -46,9 +47,6 @@ const Layout = () => {
 		<div className="d-flex flex-column">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-
-					{/*<NavbarConsumer className="m-3 fixed-top" />*/}
-
 					<Switch>
 						<Route exact path="/">
 							<Home />
@@ -118,6 +116,12 @@ const Layout = () => {
 						<Route exact path="/my-cart-page">
 							<MyCartPage />
                 </Route>*/}
+						<Route exact path="/seller-register">
+							<SellerRegister />
+						</Route>
+						<Route exact path="/costumer-register">
+							<CostumerRegister />
+						</Route>
 						<Route>
 							<h1>Not found!</h1>
 						</Route>
