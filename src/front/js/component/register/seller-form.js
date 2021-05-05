@@ -22,6 +22,11 @@ export const SellerForm = () => {
 				<Form.Control type="text" placeholder="" required />
 			</Form.Group>
 
+			<Form.Group controlId="controlEmail">
+				<Form.Label>Ingrese la cédula jurídica</Form.Label>
+				<Form.Control type="text" placeholder="0 0000 0000" required />
+			</Form.Group>
+
 			<Form.Group controlId="exampleForm.ControlTextarea1">
 				<Form.Label>Describa su tienda</Form.Label>
 				<Form.Control as="textarea" rows={2} required />
