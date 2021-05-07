@@ -62,10 +62,11 @@ export const SocialMedia = styled.section`
 
 export const SocialMediaWrap = styled.div`
 	display: flex !important;
+	padding: 20px;
 	justify-content: space-between !important;
 	align-items: center !important;
 	max-width: 1100px !important;
-	margin: 20px auto 20px 20px !important;
+	margin: 0px auto 20px 20px !important;
 	@media screen and (max-width: 820px) {
 		flex-direction: column !important;
 	}

@@ -1,21 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import j1 from "../../img/1.png";
-import j2 from "../../img/2.png";
-import j3 from "../../img/3.png";
-import j4 from "../../img/4.png";
 import "../../styles/home.scss";
 import { Link } from "react-router-dom";
-
+import Navbar from "../component/navbar";
+import Footer from "../component/footer";
+import SideBar from "../component/sidebar";
+import HeroSection from "../component/heroSection";
+import InfoSection from "../component/infoSection";
+import Services from "../component/services";
+import { homeObjOne, homeObjThree } from "../component/data";
 export const Home = () => {
 	const { store, actions } = useContext(Context);
-
+	const [isOpen, setIsOpen] = useState(false);
+	const toggle = () => {
+		setIsOpen(!isOpen);
+	};
 	return (
-		<div className="text-center mt-5" style={{ backgroundColor: "black" }}>
-			<img src={j1} className="jimage" />
-			<img src={j2} className="jimage" />
-			<img src={j3} className="jimage" />
-			<img src={j4} className="jimage" />
-		</div>
+		<>
+			<SideBar isOpen={isOpen} toggle={toggle} />
+			<Navbar toggle={toggle} />
+			<HeroSection />
+			<InfoSection {...homeObjOne} />
+			<Services />
+			<InfoSection {...homeObjThree} />
+			<Footer />
+		</>
 	);
 };

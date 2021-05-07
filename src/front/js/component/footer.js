@@ -1,10 +1,53 @@
-import React, { Component } from "react";
+import React from "react";
+import { animateScroll as scroll } from "react-scroll";
 
-export const Footer = () => (
-	<footer className="footer mt-auto py-3 text-center">
-		<p>
-			Made with <i className="fa fa-heart text-danger" /> by{" "}
-			<a href="http://www.4geeksacademy.com">4Geeks Academy</a>
-		</p>
-	</footer>
-);
+import { FaFacebook, FaGithub, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import {
+	FooterContainer,
+	FooterWrap,
+	FooterLinkContainer,
+	FooterLinksWrapper,
+	FooterLinksItem,
+	FooterLinkTitle,
+	FooterLink,
+	SocialMedia,
+	SocialMediaWrap,
+	SocialLogo,
+	WebsideRights,
+	SocialIcon,
+	SocialLink
+} from "../../styles/FooterElements";
+const Footer = () => {
+	const toggleHome = () => {
+		scroll.scrollToTop();
+	};
+	return (
+		<>
+			<FooterContainer>
+				<SocialMedia>
+					<SocialMediaWrap>
+						<SocialLogo to="/" onClick={toggleHome}>
+							amArte
+						</SocialLogo>
+						<WebsideRights>amArte © {new Date().getFullYear()} All rights reserved</WebsideRights>
+						<SocialIcon>
+							<SocialLink href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+								<FaFacebook />
+							</SocialLink>
+							<SocialLink href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+								<FaInstagram />
+							</SocialLink>
+							<SocialLink href="https://www.youtube.com" target="_blank" aria-label="Youtube">
+								<FaYoutube />
+							</SocialLink>
+							<SocialLink href="https://www.twitter.com" target="_blank" aria-label="Twitter">
+								<FaTwitter />
+							</SocialLink>
+						</SocialIcon>
+					</SocialMediaWrap>
+				</SocialMedia>
+			</FooterContainer>
+		</>
+	);
+};
+export default Footer;
