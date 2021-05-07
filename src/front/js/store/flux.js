@@ -2,22 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			message: null,
-			inventory: [
-				{
-					name: "Store1",
-					code: "00001",
-					description: "bla bla bla",
-					price: "10",
-					available: true
-				},
-				{
-					name: "Store2",
-					code: "00002",
-					description: "lorem ipsum",
-					price: "15",
-					available: true
-				}
-			],
+			inventory: [],
 			cart: [],
 
 			demo: [
@@ -39,7 +24,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			email: null,
 			cartTotal: null,
 			orders: [],
-			register: false
+			ordersLoaded: false,
+			register: false,
+			inventoryUpdated: false
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -200,7 +187,87 @@ const getState = ({ getStore, getActions, setStore }) => {
 					orders: [...store.orders, details],
 					cart: []
 				});
+			},
+			getOrders: async () => {
+				const store = getStore();
+
+				const URL = `${store.apiurl}/orders`; // API to get placed orders
+				const CONFIG = {
+					method: "GET"
+					// headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
+					// mode: "no-cors"
+				};
+
+				try {
+					const resp = await fetch(URL, CONFIG);
+					if (resp.status !== 200) {
+						alert("Error");
+						return false;
+					}
+
+					const data = await resp.json();
+					console.log("Orders Loaded Successfully");
+					console.log(data);
+					setStore({ orders: data });
+					setStore({ ordersLoaded: true });
+					return true;
+				} catch (error) {
+					console.error("ERROR", error);
+				}
+			},
+			getProducts: async () => {
+				const store = getStore();
+
+				const URL = `${store.apiurl}/product`; // API to get all products
+				const CONFIG = {
+					method: "GET"
+					// headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
+					// mode: "no-cors"
+				};
+
+				try {
+					const resp = await fetch(URL, CONFIG);
+					if (resp.status !== 200) {
+						alert("Error");
+						return false;
+					}
+
+					const data = await resp.json();
+					console.log("Orders Loaded Successfully");
+					console.log(data);
+					setStore({ inventory: data });
+					setStore({ inventoryUpdated: true });
+					return true;
+				} catch (error) {
+					console.error("ERROR", error);
+				}
 			}
+
+			// getOrders: () => {
+			// 	const store = getStore();
+			// 	fetch(process.env.BACKEND_URL + "/api/orders", {
+			// 		method: "GET",
+			// 		headers: {
+			// 			"Content-Type": "application/json"
+			// 		}
+			// 	})
+			// 		.then(response => {
+			// 			if (!response.ok) {
+			// 				alert("The data submitted is incorrect");
+			// 				throw Error(response.statusText);
+			// 			}
+			// 			return response.json();
+			// 		})
+			// 		.then(data => {
+			// 			console.log("Orders Loaded Successfully");
+			// 			setStore({ orders: data });
+			// 			setStore({ ordersLoaded: true });
+			// 		})
+
+			// 		.catch(error => {
+			// 			console.error("Error:", error);
+			// 		});
+			// }
 		}
 	};
 };

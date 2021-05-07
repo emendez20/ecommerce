@@ -30,6 +30,8 @@ export default function Checkout() {
 					console.log(order);
 					// actions.processOrder(store.cart);
 					setOrderDetails(order);
+
+					//THIS FETCH LOGS THE ORDER TO THE ORDERS TABLE IN THE DATABASE
 					fetch(process.env.BACKEND_URL + "/api/orders", {
 						method: "POST",
 						headers: {
@@ -51,6 +53,30 @@ export default function Checkout() {
 						.catch(error => {
 							console.error("Error:", error);
 						});
+					//THIS FETCH WILL MODIFY THE PRODUCT IN THE DATABASE TO UPDATE THE AVAILABLE COLUMN FROM TRUE TO FALSE
+					store.cart.map((element, index) =>
+						fetch(process.env.BACKEND_URL + "/api/product/" + element.code, {
+							method: "PUT",
+							headers: {
+								"Content-Type": "application/json"
+							},
+							body: JSON.stringify({ available: false })
+						})
+							.then(response => {
+								if (!response.ok) {
+									alert("The data submitted is incorrect");
+									throw Error(response.statusText);
+								}
+								return response.json();
+							})
+							.then(data => {
+								console.log("PRODUCT AVAILABILITY UPDATED");
+							})
+
+							.catch(error => {
+								console.error("Error:", error);
+							})
+					);
 
 					order.status == "COMPLETED" ? setRedirect(true) : null;
 				},

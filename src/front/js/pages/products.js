@@ -20,43 +20,52 @@ const Products = () => {
 				<h2 className="textCenter">PRODUCTOS</h2>
 			</div>
 			<div className="dFlex scroll row rowCols3" style={{ maxWidth: "100%" }}>
-				{store.inventory.map((item, index) => (
-					<Card
-						style={{ minWidth: "150px", maxWidth: "286px", backgroundColor: "#040707" }}
-						key={index}
-						className="text-white m-3">
-						<Card.Img variant="top" src={product_placeholder} />
-						<Card.Body>
-							<Card.Title>
-								{store.inventory[index].name ? store.inventory[index].name : "Loading"}
-							</Card.Title>
-							<Card.Text>
-								Descripcion:{" "}
-								{store.inventory[index].description ? store.inventory[index].description : "Loading"}
-								<br />
-								Precio: {store.inventory[index].price ? store.inventory[index].price : "Loading"}
-							</Card.Text>
-							<div className="row justify-content-between">
-								<Link to={"/singleproduct/" + index}>
-									<Button className="ml-2" variant="dark">
-										Details...
-									</Button>
-								</Link>
-								<div className="mr-2">
-									<Button variant="dark" type="button">
-										<i
-											className="fas fa-shopping-cart text-white"
-											style={{ fontSize: "20px" }}
-											onClick={() => {
-												actions.addToCart(index);
-											}}
-										/>
-									</Button>
-								</div>
-							</div>
-						</Card.Body>
-					</Card>
-				))}
+				{store.inventory.map(
+					(item, index) =>
+						store.inventory[index].available ? (
+							<Card
+								style={{ minWidth: "150px", maxWidth: "338px", backgroundColor: "#040707" }}
+								key={index}
+								className="text-white m-3">
+								<Card.Img variant="top" src={store.inventory[index].url} />
+								<Card.Body>
+									<Card.Title>
+										{store.inventory[index].name ? store.inventory[index].name : "Loading"}
+									</Card.Title>
+									<Card.Text>
+										Description:{" "}
+										{store.inventory[index].description
+											? store.inventory[index].description
+											: "Loading"}
+										<br />
+										Price: $
+										{store.inventory[index].price ? store.inventory[index].price : "Loading"}
+									</Card.Text>
+									<div className="row align-items-end">
+										<div className="col align-self-end">
+											<Link to={"/singleproduct/" + index}>
+												<Button className="ml-2 " variant="dark">
+													Details...
+												</Button>
+											</Link>
+										</div>
+										<div className="col align-self-end" />
+										<div className="col align-self-end">
+											<Button variant="dark" type="button">
+												<i
+													className="fas fa-shopping-cart text-white"
+													style={{ fontSize: "20px" }}
+													onClick={() => {
+														actions.addToCart(index);
+													}}
+												/>
+											</Button>
+										</div>
+									</div>
+								</Card.Body>
+							</Card>
+						) : null
+				)}
 			</div>
 		</div>
 	) : (

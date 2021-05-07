@@ -176,10 +176,10 @@ def create_product():
     print("Product added: ", request_body)
     return jsonify(request_body), 200
 
-@api.route('/product/<int:product_id>', methods=['PUT'])
-def update_product(product_id):
+@api.route('/product/<int:code>', methods=['PUT'])
+def update_product(code):
     request_body = request.get_json()
-    product = Product.query.get(product_id)
+    product = Product.query.get(code)
 
     if product is None:
         raise APIException('Product not found', status_code=404)
@@ -190,7 +190,7 @@ def update_product(product_id):
     if "description" in request_body:
         product.description = request_body["description"]     
     if "available" in request_body:
-        product.quantity = request_body["available"]
+        product.available = request_body["available"]
     if "price" in request_body:
         product.price = request_body["price"]
     if "url" in request_body:
@@ -296,6 +296,17 @@ def get_single_log(id):
         "msg": "Listing single log"
     }
     return jsonify(log.serialize()), 200    
+
+#LIST ALL USERS#
+@api.route('/orders', methods=['GET'])
+def get_orders():
+    all_orders = Orders.query.all()
+    all_orders_list = list(map(lambda x: x.serialize(), all_orders))
+    response_body = {
+        "msg": "Listing orders"
+    }
+
+    return jsonify(all_orders_list), 200   
 
 
 @api.route('/orders', methods=['POST'])

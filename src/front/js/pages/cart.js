@@ -28,7 +28,7 @@ const Cart = () => {
 						style={{ minWidth: "150px", maxWidth: "286px", backgroundColor: "#040707" }}
 						key={index}
 						className="text-white m-3">
-						<Card.Img variant="top" src={product_placeholder} />
+						<Card.Img variant="top" src={store.cart[index].url} />
 						<Card.Body>
 							<Card.Title>{store.cart[index].name ? store.cart[index].name : "Loading"}</Card.Title>
 							<Card.Text>

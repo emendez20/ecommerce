@@ -6,6 +6,7 @@ import Products from "./products";
 
 const Login = () => {
 	// const { store, actions } = useContext(Context);
+	// const [store, actions] = useContext();
 	const [email, setEmail] = useState("");
 	const [redirect, setRedirect] = useState(false);
 	const [password, setPassword] = useState("");

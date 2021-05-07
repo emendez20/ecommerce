@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Table, Column, Integer, ForeignKey, String, Boolean, Float
+from sqlalchemy import Table, Column, Integer, ForeignKey, String, Boolean, Text,Float
 from sqlalchemy.orm import relationship
 
 db = SQLAlchemy()
@@ -62,7 +62,7 @@ class Orders(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            # "date": self.date,
+            "date": self.date,
             "amount": self.amount,
             "status": self.status
         }            

@@ -1,84 +1,42 @@
-import React, { useState, useEffect } from "react";
-import { FaBars } from "react-icons/fa";
-import { IconContext } from "react-icons/lib";
-import { animateScroll as scroll } from "react-scroll";
-import {
-	Nav,
-	NavbarContainer,
-	NavLogo,
-	MobileIcon,
-	NavMenu,
-	NavItem,
-	NavLinks,
-	NavLinks2,
-	NavBtn,
-	NavBtnLink
-} from "../../styles/navbarElements";
-const Navbar = ({ toggle }) => {
-	const [scrollNav, setScrollNav] = useState(false);
-	const changeNav = () => {
-		if (window.scrollY >= 80) {
-			setScrollNav(true);
-		} else {
-			setScrollNav(false);
-		}
-	};
-	useEffect(() => {
-		window.addEventListener("scroll", changeNav);
-	}, []);
-	const toggleHome = () => {
-		scroll.scrollToTop();
-	};
-	return (
-		<>
-			<IconContext.Provider value={{ color: "#fff" }}>
-				<Nav scrollNav={scrollNav}>
-					<NavbarContainer>
-						<NavLogo to="/home" onClick={toggleHome}>
-							amArte
-						</NavLogo>
-						<MobileIcon onClick={toggle}>
-							<FaBars />
-						</MobileIcon>
-						<NavMenu>
-							<NavItem>
-								<NavLinks to="about" smooth={true} duration={500} spy={true} exact="true" offset={-80}>
-									Who we are
-								</NavLinks>
-							</NavItem>
+import { Link } from "react-router-dom";
+import React, { useRef, useEffect, useContext, useState } from "react";
 
-							<NavItem>
-								<NavLinks
-									to="services"
-									smooth={true}
-									duration={500}
-									spy={true}
-									exact="true"
-									offset={-80}>
-									What we offer
-								</NavLinks>
-							</NavItem>
-							<NavItem>
-								<NavLinks to="signup" smooth={true} duration={500} spy={true} exact="true" offset={-80}>
-									Contact
-								</NavLinks>
-							</NavItem>
-							<NavItem>
-								<NavLinks2 to="/signup">Products</NavLinks2>
-							</NavItem>
-						</NavMenu>
-						<NavBtn>
-							<NavBtnLink scrollNav={scrollNav} to="/signin">
-								Cart
-							</NavBtnLink>
-							<NavBtnLink scrollNav={scrollNav} to="/signin">
-								Sign
-							</NavBtnLink>
-						</NavBtn>
-					</NavbarContainer>
-				</Nav>
-			</IconContext.Provider>
-		</>
+//Style
+import { Container, Col, Row, Image, Button } from "react-bootstrap";
+
+//Img
+//import logo from "../../img/logo";
+
+export const Navbar = () => {
+	return (
+		<Container
+			fluid
+			className="justify-content-center sticky-top m-0"
+			style={{ backgroundColor: "black", padding: "0px", opacity: 0.6 }}>
+			<Container style={{ backgroundColor: "", marginBottom: "30px" }} className="mt-4">
+				<Row className="text-center align-items-center">
+					<Col xs={12} md={10} className="mb-2">
+						<Image src="" alt="" width="30" height="30" className="d-inline-block align-top" />
+						<strong className="h2" style={{ color: "white" }}>
+							am-arte
+						</strong>
+					</Col>
+					<Col xs={6} md={1} className="">
+						<Link to="/cart" href="#cart">
+							<Button variant="outline-light" size="sm">
+								<i className="fas fa-shopping-cart pl-0" />
+							</Button>
+						</Link>
+					</Col>
+					<Col xs={6} md={1} className="">
+						<Link href="/login" to="/login">
+							<Button id="logout" variant="outline-light" typo="summit" size="sm">
+								<i className="fas fa-sign-out-alt" />
+							</Button>
+						</Link>
+					</Col>
+				</Row>
+			</Container>
+		</Container>
 	);
 };
-export default Navbar;
