@@ -86,12 +86,14 @@
 		"react-dom": "^16.8.4",
 		"react-icons": "^4.2.0",
 		"react-is": "^17.0.2",
+		"react-paypal-checkout": "^1.0.9",
 		"react-paypal-express-checkout": "^1.0.5",
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^5.2.0",
 		"react-scroll": "^1.8.2",
 		"react-undraw": "^2.0.3",
 		"react-undraw-illustrations": "^2.0.3",
-		"styled-components": "^5.2.3"
+		"styled-components": "^5.3.0",
+		"sweetalert": "^2.1.2"
 	}
 }

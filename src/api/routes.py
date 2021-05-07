@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 import redis
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Seller,Customer, Product, TransactionLog
+from api.models import db, User,Product, Orders
 from api.utils import generate_sitemap, APIException
 from sqlalchemy import select
 from flask_jwt_extended import create_access_token
@@ -42,7 +42,7 @@ def create_token():
     
     # create a new token with the user id inside
     access_token = create_access_token(identity=user.id)
-    return jsonify({"token": access_token, "user_id": user.id})
+    return jsonify({"token": access_token, "email": user.email})
 
 #USER ENPOINTS START HERE#
 
@@ -84,37 +84,15 @@ def get_single_user(id):
 
 
 #USER REGISTRATION ROUTE
-@api.route('/user', methods=['POST'])
+@api.route('/register', methods=['POST'])
 def create_user():
+   
     request_body = request.get_json()
-    user = User(email=request_body["email"], password=sha256_crypt.encrypt(str(request_body["password"])))
-    user_type=request_body["user_type"]
+    user = User(email=request_body["email"], password=request_body["password"], is_active=True)
     db.session.add(user)
     db.session.commit()
+
     
-    requesting_user = User.query.filter_by(email=request_body["email"]).first()
-    user_id = requesting_user.id
-    if( user_type == "seller" ):
-        seller = Seller(
-            company_legal_id=request_body["company_legal_id"],
-            company_name=request_body["company_name"],
-            company_address=request_body["company_address"],
-            company_phone=request_body["company_phone"],
-            company_rep_name=request_body["company_rep_name"],
-            company_rep_number=request_body["company_rep_number"],
-            logo_url=request_body["logo_url"],
-            user_id=user_id)
-        db.session.add(seller)
-        
-    if( user_type == "customer" ):
-        customer = Customer(
-            name=request_body["name"],
-            last_name=request_body["last_name"],
-            phone=request_body["phone"],
-            address=request_body["address"],
-            user_id=user_id) 
-        db.session.add(customer)
-    db.session.commit()
     print("User created: ", request_body)
     return jsonify(request_body), 200
 
@@ -155,172 +133,6 @@ def delete_user(id):
     #USER ENPOINTS END HERE#
     #SELLER ENPOINTS START HERE#
     
-    
-@api.route('/seller', methods=['GET'])
-def get_sellers():
-    all_sellers = Seller.query.all()
-    all_sellers_list = list(map(lambda x: x.serialize(), all_sellers))
-    response_body = {
-        "msg": "Listing all sellers"
-    }
-
-    return jsonify(all_sellers_list), 200
-
-@api.route('/seller/<int:id>', methods=['GET'])
-def get_single_seller(id):
-    seller = Seller.query.get(id)
-
-    if seller is None:
-        raise APIException("Seller does not exist", status_code=404)
-    response_body = {
-        "msg": "Listing single seller"
-    }
-    return jsonify(seller.serialize()), 200    
-
-
-@api.route('/seller', methods=['POST'])
-def create_seller():
-    request_body = request.get_json()
-    seller = Seller(
-        company_legal_id=request_body["company_legal_id"], company_name=request_body["company_name"],
-        company_address=request_body["company_address"],
-        company_phone=request_body["company_phone"],
-        company_rep_name=request_body["company_rep_name"],
-        company_rep_number=request_body["company_rep_number"])
-    db.session.add(seller)
-    db.session.commit()
-    print("Seller created: ", request_body)
-    return jsonify(request_body), 200
-
-@api.route('/seller/<int:seller_id>', methods=['PUT'])
-def update_seller(seller_id):
-    request_body = request.get_json()
-    seller = Seller.query.get(seller_id)
-
-    if seller is None:
-        raise APIException('Seller not found', status_code=404)
-    if "company_legal_id" in request_body:
-        seller.company_legal_id = request_body["company_legal_id"]
-    if "company_name" in request_body:
-        seller.company_name = request_body["company_name"]
-    if "company_address" in request_body:
-        seller.company_address = request_body["company_address"]     
-    if "company_phone" in request_body:
-        seller.company_phone = request_body["company_phone"]
-    if "company_rep_name" in request_body:
-        seller.company_rep_name = request_body["company_rep_name"]
-    if "company_legal_id" in request_body:
-        seller.company_rep_number = request_body["company_rep_number"]               
-    
-    db.session.commit()
-
-    print("Seller property updated: ", request_body)
-    return jsonify(request_body), 200
-
-
-@api.route('/seller/<int:id>', methods=['DELETE'])
-def delete_seller(id):
-    seller = Seller.query.get(id)
-
-    if seller is None:
-        raise APIException('Seller not found', status_code=404)
-
-    db.session.delete(seller)
-    db.session.commit()
-    response_body = {
-         "msg": "Seller deleted successfully",
-    }
-    return jsonify(response_body), 200      
-
-
-
-    
-    
-    #SELLER ENPOINTS END HERE#
-    #CUSTOMER ENPOINTS START HERE#
-    
-    
-@api.route('/customer', methods=['GET'])
-def get_customers():
-    all_customers = Customer.query.all()
-    all_customers_list = list(map(lambda x: x.serialize(), all_customers))
-    response_body = {
-        "msg": "Listing all sellers"
-    }
-
-    return jsonify(all_customers_list), 200
-
-@api.route('/customer/<int:id>', methods=['GET'])
-def get_single_customer(id):
-    customer = Customer.query.get(id)
-
-    if customer is None:
-        raise APIException("Customer does not exist", status_code=404)
-    response_body = {
-        "msg": "Listing single customer"
-    }
-    return jsonify(customer.serialize()), 200    
-
-
-@api.route('/customer', methods=['POST'])
-def create_customer():
-    request_body = request.get_json()
-    customer = Customer(
-        name=request_body["name"],
-        last_name=request_body["last_name"],
-        phone=request_body["phone"],
-        address=request_body["address"])
-
-    db.session.add(customer)
-    db.session.commit()
-    print("Customer created: ", request_body)
-    return jsonify(request_body), 200
-
-@api.route('/customer/<int:customer_id>', methods=['PUT'])
-def update_customer(customer_id):
-    request_body = request.get_json()
-    customer = Customer.query.get(customer_id)
-
-    if seller is None:
-        raise APIException('Seller not found', status_code=404)
-    if "name" in request_body:
-        seller.name = request_body["name"]
-    if "last_name" in request_body:
-        seller.last_name = request_body["last_name"]
-    if "company_address" in request_body:
-        seller.company_address = request_body["company_address"]     
-    if "phone" in request_body:
-        seller.phone = request_body["phone"]
-    if "address" in request_body:
-        seller.address = request_body["address"]
-    if "is_active" in request_body:
-        seller.is_active = request_body["is_active"]               
-    
-    db.session.commit()
-
-    print("Seller property updated: ", request_body)
-    return jsonify(request_body), 200
-
-
-@api.route('/customer/<int:id>', methods=['DELETE'])
-def delete_customer(id):
-    customer = Customer.query.get(id)
-
-    if customer is None:
-        raise APIException('Customer not found', status_code=404)
-
-    db.session.delete(customer)
-    db.session.commit()
-    response_body = {
-         "msg": "Customer deleted successfully",
-    }
-    return jsonify(response_body), 200     
-
-
-
-    
-    # 
-    #CUSTOMER ENPOINTS END HERE#    
     #PRODUCT ENPOINTS START HERE#
     
     
@@ -354,20 +166,14 @@ def create_product():
         code=request_body["code"],
         name=request_body["name"],
         description=request_body["description"],
-        category=request_body["category"],
-        quantity=request_body["quantity"],
+        available=request_body["available"],
         price=request_body["price"],
-        discount=request_body["discount"],
-        seller_id=request_body["seller_id"],
-        img1=request_body["img1"],
-        img2=request_body["img2"],
-        img3=request_body["img3"]
+        url=request_body["url"]
+        )       
 
-        )
-
-    db.session.add(customer)
+    db.session.add(product)
     db.session.commit()
-    print("Customer created: ", request_body)
+    print("Product added: ", request_body)
     return jsonify(request_body), 200
 
 @api.route('/product/<int:product_id>', methods=['PUT'])
@@ -383,12 +189,12 @@ def update_product(product_id):
         product.name = request_body["name"]
     if "description" in request_body:
         product.description = request_body["description"]     
-    if "quantity" in request_body:
-        product.quantity = request_body["quantity"]
+    if "available" in request_body:
+        product.quantity = request_body["available"]
     if "price" in request_body:
         product.price = request_body["price"]
-    if "discount" in request_body:
-        product.discount = request_body["discount"]               
+    if "url" in request_body:
+        product.discount = request_body["url"]               
     
     db.session.commit()
 
@@ -416,45 +222,45 @@ def delete_product(id):
     #PRODUCT ENPOINTS END HERE#       
     #TRANSACTIONLOGS ENPOINTS START HERE#
 
-#USE THIS ROUTE TO ADD PRODUCTS TO THE CART 
-@api.route('/add_to_cart/<int:id>', methods=['POST'])
-@jwt_required()
-def add_prod(id):
-    request_body = request.get_json()
-    log = TransactionLog(
-        token=request_body["token"],
-        quantity=request_body["quantity"],
-        amount=request_body["amount"],
-        discount_percent=request_body["discount_percent"],
-        status=request_body["status"],
-        seller_id=request_body["seller_id"],
-        customer_id=request_body["customer_id"],
-        product_id=request_body["product_id"]
-        )
+# #USE THIS ROUTE TO ADD PRODUCTS TO THE CART 
+# @api.route('/add_to_cart/<int:id>', methods=['POST'])
+# @jwt_required()
+# def add_prod(id):
+#     request_body = request.get_json()
+#     log = TransactionLog(
+#         token=request_body["token"],
+#         quantity=request_body["quantity"],
+#         amount=request_body["amount"],
+#         discount_percent=request_body["discount_percent"],
+#         status=request_body["status"],
+#         seller_id=request_body["seller_id"],
+#         customer_id=request_body["customer_id"],
+#         product_id=request_body["product_id"]
+#         )
 
-    db.session.add(customer)
-    db.session.commit()
-    print("Customer created: ", request_body)
-    return jsonify(request_body), 200
+#     db.session.add(customer)
+#     db.session.commit()
+#     print("Customer created: ", request_body)
+#     return jsonify(request_body), 200
     
-#USE THIS ROUTE TO GET THE CART FOR THE CURRENT USER
-@api.route('/get_cart/<int:id>', methods=['GET'])
-@jwt_required()
-def get_current_cart(id):
-    cart = select(all).where(TransactionLog.token == current_token) #CART IS ONLY GOOD FOR THE CURRENT TOKEN, THIS QUERY CHECK LOGS ASSOCIATED TO THE CURRENT TOKEN AND RETURNS ALL THE ITEMS RELATED AND THE CART TOTAL AMOUNT
-    return jsonify(cart), 200  
+# #USE THIS ROUTE TO GET THE CART FOR THE CURRENT USER
+# @api.route('/get_cart/<int:id>', methods=['GET'])
+# @jwt_required()
+# def get_current_cart(id):
+#     cart = select(all).where(TransactionLog.token == current_token) #CART IS ONLY GOOD FOR THE CURRENT TOKEN, THIS QUERY CHECK LOGS ASSOCIATED TO THE CURRENT TOKEN AND RETURNS ALL THE ITEMS RELATED AND THE CART TOTAL AMOUNT
+#     return jsonify(cart), 200  
 
 #USE THIS ROUTE TO MODIFY THE STATUS OF THE ORDERS. STATUS OPTIONS ARE:
 #cart, paid, dispatched, cancelled
 
-@api.route('/order/<string:token>', methods=['PUT'])
+@api.route('/order/<int:id>', methods=['PUT'])
 @jwt_required()
-def update_order_status(token):
+def update_order_status(id):
     request_body = request.get_json()
-    order = TransactionLog.query.get(token)
+    order = Orders.query.get(id)
 
     if order is None:
-        raise APIException('Product not found', status_code=404)
+        raise APIException('Order not found', status_code=404)
     if "status" in request_body:
         order.status = request_body["status"]       
     
@@ -465,39 +271,22 @@ def update_order_status(token):
 
 #-------------------------------------------------------------------  
 #USE THIS ROUTE TO UPDATE THE INVENTORY FOR EACH PRODUCT AFTER THE ORDER STATUS UPDATES TO PAID --- CALCULATE ON FRONT END AND SUBMIT THE NEW INVENTORY IN THE JSON REQUEST
-@api.route('/inventory/<int:product_id>', methods=['PUT'])
-@jwt_required()
-def update_inventory(product_id):
-    request_body = request.get_json()
-    product = Product.query.get(product_id)
 
-    if product is None:
-        raise APIException('Product not found', status_code=404)
-    if "quantity" in request_body:
-        product.quantity = request_body["quantity"]       
-    
-    db.session.commit()
-
-    print("Inventory quantity updated: ", request_body)
-    return jsonify(request_body), 200
-
-@api.route('/transactionlog', methods=['GET'])
-def get_logs():
-    all_logs =  session.execute(
-        select(User.name, Address.email_address).
-        join(User.addresses).
-        order_by(User.id, Address.id)
+@api.route('/orders/<string:email>', methods=['GET'])
+def get_user_orders(email):
+    user_orders =  session.execute(
+        select(Orders.id, Orders.paypal_id, Orders.status, Orders.amount).
+        filter_by(email).order_by(Orders.id)
         )
-    
-    Select * From 
-    all_logs_list = list(map(lambda x: x.serialize(), all_logs))
+
+    user_orders_list = list(map(lambda x: x.serialize(), user_orders))
     response_body = {
-        "msg": "Listing all sellers"
+        "msg": "Listing orders"
     }
 
-    return jsonify(all_logs_list), 200
+    return jsonify(user_orders_list), 200
 
-@api.route('/transactionlog/<int:id>', methods=['GET'])
+@api.route('/orders/<int:id>', methods=['GET'])
 def get_single_log(id):
     log = Product.query.get(id)
 
@@ -509,39 +298,29 @@ def get_single_log(id):
     return jsonify(log.serialize()), 200    
 
 
-@api.route('/transactionlog', methods=['POST'])
-def create_log():
+@api.route('/orders', methods=['POST'])
+def create_order():
     request_body = request.get_json()
-    log = TransactionLog(
-        token=request_body["access_token"],
-        seller_id=request_body["seller_id"],
-        customer_id=request_body["customer_id"],
-        product_id=request_body["product_id"]
-        )
+    order = Orders(
+        date=request_body["date"],
+        amount=request_body["amount"],
+        status=request_body["status"]
+        )       
 
-    db.session.add(log)
+    db.session.add(order)
     db.session.commit()
-    print("Log created: ", request_body)
+    print("Order added: ", request_body)
     return jsonify(request_body), 200
 
-
-
-@api.route('/transactionlog/<int:id>', methods=['DELETE'])
-def delete_log(id):
-    log = TransactionLog.query.get(id)
-
-    if log is None:
-        raise APIException('Log not found', status_code=404)
-
-    db.session.delete(log)
-    db.session.commit()
-    response_body = {
-         "msg": "Log deleted successfully",
-    }
-    return jsonify(response_body), 200    
-
-
+    #USER REGISTRATION ROUTE
+# @api.route('/register', methods=['POST'])
+# def create_user():
+   
+#     request_body = request.get_json()
+#     user = User(email=request_body["email"], password=request_body["password"], is_active=True)
+#     db.session.add(user)
+#     db.session.commit()
 
     
-    
-    #TRANSACTIONLOGS ENPOINTS END HERE#        
+#     print("User created: ", request_body)
+#     return jsonify(request_body), 200

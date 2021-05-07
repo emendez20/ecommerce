@@ -13,3 +13,4 @@ import Layout from "./layout";
 
 //render your react application
 ReactDOM.render(<Layout />, document.querySelector("#app"));
+<script src="https://www.paypal.com/sdk/js?client-id=AT0Zollq-O580vkMKLIT492DNsYmNHrbmKZw69ZclSgXAQ2z1YDmfvpv9frKw0uiEPUnUXDGyegmIltz" />;
