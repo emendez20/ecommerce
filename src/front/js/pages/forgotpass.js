@@ -31,13 +31,13 @@ const ForgotPass = () => {
 	return (
 		<Container id="contenedor1" className="text-center p-3">
 			<Row className="justify-content-center">
-				<Col className="col-md-4 formulary">
+				<Col className="col-md-4 formulary p-5" style={{ backgroundColor: "#101522" }}>
 					<Form action="">
 						<FormGroup className="text-center pb-3">
-							<h1 className="text-light">Recuperacion de Cuenta</h1>
+							<h1 className="text-light">Account Recovery</h1>
 						</FormGroup>
 						<FormGroup className="mx-sm-4 pb-3">
-							<label>Ingrese su correo electronico</label>
+							<label>Enter your email</label>
 							<input
 								type="text"
 								className="form-control"

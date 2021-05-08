@@ -12,7 +12,7 @@ import Checkout from "../component/checkout";
 const Orders = () => {
 	const { store, actions } = useContext(Context);
 	return store.ordersLoaded ? (
-		<div className="container">
+		<div className="container mt-5 pt-5" style={{ height: "800px" }}>
 			<div className="d-flex justify-content-between flex-row-reverse">
 				<Link to="/products">
 					<span className="btn btn-dark btn-lg" href="#" role="button">

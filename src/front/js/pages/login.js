@@ -56,7 +56,7 @@ const Login = () => {
 			{redirect ? <Redirect to="/products" /> : ""}
 			<Container id="contenedor1" className="text-center p-3">
 				<Row className="justify-content-center">
-					<Col className="col-md-4 formulary">
+					<Col className="col-md-4 formulary p-5" style={{ backgroundColor: "#101522" }}>
 						<Form action="" onSubmit={e => handleSubmit(e)}>
 							<FormGroup className="text-center pb-3">
 								<h1 className="text-light">Login</h1>
@@ -86,12 +86,16 @@ const Login = () => {
 							</FormGroup>
 							<FormGroup className="mx-sm-4 pb-3 text-center">
 								<Link to="/register">
-									<input type="submit" className="btn btn-block register" value="Create Account" />
+									<input
+										type="submit"
+										className="btn btn-block register text-white"
+										value="Create Account"
+									/>
 								</Link>
 							</FormGroup>
 
 							<Link to="/forgotPass">
-								<input className="btn btn-block forgotPass" value="Forgot your password?" />
+								<input className="btn btn-block forgotPass text-white" value="Forgot your password?" />
 							</Link>
 						</Form>
 					</Col>

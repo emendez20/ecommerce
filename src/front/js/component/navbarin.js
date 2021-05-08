@@ -13,8 +13,8 @@ import {
 	NavLinks2,
 	NavBtn,
 	NavBtnLink
-} from "../../styles/navbarElements";
-const Navbar = ({ toggle }) => {
+} from "../../styles/navbarElementsin";
+const Navbarin = ({ toggle }) => {
 	const [scrollNav, setScrollNav] = useState(false);
 	const changeNav = () => {
 		if (window.scrollY >= 80) {
@@ -31,7 +31,7 @@ const Navbar = ({ toggle }) => {
 	};
 	return (
 		<>
-			<IconContext.Provider value={{ color: "#fff" }}>
+			<IconContext.Provider value={{ color: "#000" }}>
 				<Nav scrollNav={scrollNav}>
 					<NavbarContainer>
 						<NavLogo to="/" onClick={toggleHome}>
@@ -42,31 +42,18 @@ const Navbar = ({ toggle }) => {
 						</MobileIcon>
 						<NavMenu>
 							<NavItem>
-								<NavLinks to="about" smooth={true} duration={500} spy={true} exact="true" offset={-80}>
-									Who we are
-								</NavLinks>
-							</NavItem>
-
-							<NavItem>
-								<NavLinks
-									to="services"
-									smooth={true}
-									duration={500}
-									spy={true}
-									exact="true"
-									offset={-80}>
-									What we offer
-								</NavLinks>
+								<NavLinks2 to="/products">Products</NavLinks2>
 							</NavItem>
 							<NavItem>
-								<NavLinks to="signup" smooth={true} duration={500} spy={true} exact="true" offset={-80}>
-									Contact
-								</NavLinks>
+								<NavLinks2 to="/viewOrders">View My Orders</NavLinks2>
 							</NavItem>
 						</NavMenu>
 						<NavBtn>
-							<NavBtnLink scrollNav={scrollNav} to="/login">
-								Login
+							<NavBtnLink scrollNav={scrollNav} to="/cart">
+								Cart
+							</NavBtnLink>
+							<NavBtnLink scrollNav={scrollNav} to="/logout">
+								Logout
 							</NavBtnLink>
 						</NavBtn>
 					</NavbarContainer>
@@ -75,4 +62,4 @@ const Navbar = ({ toggle }) => {
 		</>
 	);
 };
-export default Navbar;
+export default Navbarin;

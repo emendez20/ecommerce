@@ -10,10 +10,10 @@ import product_placeholder from "../../img/product1.jpg";
 const Products = () => {
 	const { store, actions } = useContext(Context);
 	return store.inventory ? (
-		<div className="container">
+		<div className="container mt-5 pt-5">
 			<div className="d-flex justify-content-between flex-row-reverse">
 				<Link to="/">
-					<span className="btn btn-dark btn-lg" href="#" role="button">
+					<span className="btn btn-dark btn-lg mr-4" href="#" role="button">
 						Back home
 					</span>
 				</Link>

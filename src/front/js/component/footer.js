@@ -23,7 +23,7 @@ const Footer = () => {
 	};
 	return (
 		<>
-			<FooterContainer>
+			<FooterContainer className="d-flex mt-5 self-align-center text-align center self-align-center justify-content-center">
 				<SocialMedia>
 					<SocialMediaWrap>
 						<SocialLogo to="/" onClick={toggleHome}>

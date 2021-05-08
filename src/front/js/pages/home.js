@@ -16,7 +16,7 @@ export const Home = () => {
 		setIsOpen(!isOpen);
 	};
 	return (
-		<>
+		<div style={{ backgroundColor: "#101522" }}>
 			<SideBar isOpen={isOpen} toggle={toggle} />
 			<Navbar toggle={toggle} />
 			<HeroSection />
@@ -24,6 +24,6 @@ export const Home = () => {
 			<Services />
 			<InfoSection {...homeObjThree} />
 			<Footer />
-		</>
+		</div>
 	);
 };

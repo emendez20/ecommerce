@@ -4,6 +4,8 @@ import { Context } from "./store/appContext";
 import React, { useState, useEffect, useContext, createContext } from "react";
 
 import { Home } from "./pages/home";
+import Navbarin from "./component/navbarin";
+import Footer from "./component/footer";
 import Products from "./pages/products";
 import Login from "./pages/login";
 import Orders from "./pages/viewOrders";
@@ -44,26 +46,37 @@ const Layout = () => {
 						<Route exact path="/forgotpass">
 							<ForgotPass />
 						</Route>
-						<Route exact path="/single/:theid">
+						{/* <Route exact path="/single/:theid">
+                            <Navbar/>
 							<Single />
-						</Route>
+						</Route> */}
 						{/* <Route exact path="/products">
 							<Products />
 						</Route> */}
 						<Route exact path="/products">
+							<Navbarin />
 							<Products />
+							<Footer />
 						</Route>
 						<Route exact path="/cart">
+							<Navbarin />
 							<Cart />
+							<Footer />
 						</Route>
 						<Route exact path="/orderconfirmation">
+							<Navbarin />
 							<OrderConfirmation />
+							<Footer />
 						</Route>
 						<Route exact path="/viewOrders">
+							<Navbarin />
 							<Orders />
+							<Footer />
 						</Route>
 						<Route exact path="/singleproduct/:theid">
+							<Navbarin />
 							<SingleProduct />
+							<Footer />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

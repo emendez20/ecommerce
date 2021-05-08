@@ -37,7 +37,7 @@ export default function Checkout() {
 						headers: {
 							"Content-Type": "application/json"
 						},
-						body: JSON.stringify({ date: new Date(), amount: "10", status: "RECEIVED" })
+						body: JSON.stringify({ date: new Date(), amount: store.cartTotal, status: "RECEIVED" })
 					})
 						.then(response => {
 							if (!response.ok) {

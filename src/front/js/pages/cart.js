@@ -13,7 +13,7 @@ const Cart = () => {
 	const { store, actions } = useContext(Context);
 	const [checkout, setCheckOut] = useState(false);
 	return store.cart ? (
-		<div className="container">
+		<div className="container mt-5 pt-5">
 			<div className="d-flex justify-content-between flex-row-reverse">
 				<Link to="/products">
 					<span className="btn btn-dark btn-lg" href="#" role="button">

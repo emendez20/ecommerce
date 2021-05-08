@@ -10,7 +10,7 @@ const SingleProduct = props => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 	return (
-		<div className="container-fluid" style={{ backgroundColor: "#000", backgroundImag: { pattern } }}>
+		<div className="container-fluid mt-5 pt-5" style={{ backgroundColor: "#101522" }}>
 			<div
 				className="jumbotron bg-dark text-white text-align-center align-items-center p-5"
 				style={{ opacity: 0.8 }}>
